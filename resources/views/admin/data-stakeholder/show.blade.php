@@ -35,10 +35,22 @@
                         </tr>
                         <tr>
                             <th>
+                                {{ trans('cruds.dataStakeholder.fields.daerah') }}
+                            </th>
+                            <td>
+                                @if($dataStakeholder->daerah)
+                                    <span class="badge badge-relationship">{{ $dataStakeholder->daerah->nama_daerah ?? '' }}</span>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
                                 {{ trans('cruds.dataStakeholder.fields.kontak_di_lembaga') }}
                             </th>
                             <td>
-                                {{ $dataStakeholder->kontak_di_lembaga }}
+                                @if($dataStakeholder->kontakDiLembaga)
+                                    <span class="badge badge-relationship">{{ $dataStakeholder->kontakDiLembaga->name ?? '' }}</span>
+                                @endif
                             </td>
                         </tr>
                         <tr>
@@ -46,7 +58,9 @@
                                 {{ trans('cruds.dataStakeholder.fields.kontak_di_stakeholder') }}
                             </th>
                             <td>
-                                {{ $dataStakeholder->kontak_di_stakeholder }}
+                                @if($dataStakeholder->kontakDiStakeholder)
+                                    <span class="badge badge-relationship">{{ $dataStakeholder->kontakDiStakeholder->name ?? '' }}</span>
+                                @endif
                             </td>
                         </tr>
                         <tr>
@@ -54,7 +68,9 @@
                                 {{ trans('cruds.dataStakeholder.fields.jenis_kerjasama') }}
                             </th>
                             <td>
-                                {{ $dataStakeholder->jenis_kerjasama }}
+                                @if($dataStakeholder->jenisKerjasama)
+                                    <span class="badge badge-relationship">{{ $dataStakeholder->jenisKerjasama->nama_jenis ?? '' }}</span>
+                                @endif
                             </td>
                         </tr>
                         <tr>
@@ -70,7 +86,7 @@
                                 {{ trans('cruds.dataStakeholder.fields.lama_kerjasama') }}
                             </th>
                             <td>
-                                {{ $dataStakeholder->lama_kerjasama }}
+                                {{ $dataStakeholder->lama_kerjasama_label }}
                             </td>
                         </tr>
                         <tr>

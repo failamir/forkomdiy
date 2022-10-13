@@ -35,6 +35,8 @@ class PerizinanController extends Controller
     {
         abort_if(Gate::denies('perizinan_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $perizinan->load('jenisIzin');
+
         return view('admin.perizinan.show', compact('perizinan'));
     }
 

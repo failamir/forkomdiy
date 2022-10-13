@@ -1,10 +1,20 @@
 <form wire:submit.prevent="submit" class="pt-3">
 
-    <div class="form-group {{ $errors->has('perizinan.jenis_izin') ? 'invalid' : '' }}">
-        <label class="form-label" for="jenis_izin">{{ trans('cruds.perizinan.fields.jenis_izin') }}</label>
-        <input class="form-control" type="text" name="jenis_izin" id="jenis_izin" wire:model.defer="perizinan.jenis_izin">
+    <div class="form-group {{ $errors->has('perizinan.nama_izin') ? 'invalid' : '' }}">
+        <label class="form-label" for="nama_izin">{{ trans('cruds.perizinan.fields.nama_izin') }}</label>
+        <input class="form-control" type="text" name="nama_izin" id="nama_izin" wire:model.defer="perizinan.nama_izin">
         <div class="validation-message">
-            {{ $errors->first('perizinan.jenis_izin') }}
+            {{ $errors->first('perizinan.nama_izin') }}
+        </div>
+        <div class="help-block">
+            {{ trans('cruds.perizinan.fields.nama_izin_helper') }}
+        </div>
+    </div>
+    <div class="form-group {{ $errors->has('perizinan.jenis_izin_id') ? 'invalid' : '' }}">
+        <label class="form-label" for="jenis_izin">{{ trans('cruds.perizinan.fields.jenis_izin') }}</label>
+        <x-select-list class="form-control" id="jenis_izin" name="jenis_izin" :options="$this->listsForFields['jenis_izin']" wire:model="perizinan.jenis_izin_id" />
+        <div class="validation-message">
+            {{ $errors->first('perizinan.jenis_izin_id') }}
         </div>
         <div class="help-block">
             {{ trans('cruds.perizinan.fields.jenis_izin_helper') }}

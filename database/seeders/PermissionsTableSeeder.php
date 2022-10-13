@@ -194,6 +194,146 @@ class PermissionsTableSeeder extends Seeder
                 'id'    => 46,
                 'title' => 'contact_contact_access',
             ],
+            [
+                'id'    => 47,
+                'title' => 'data_umum_create',
+            ],
+            [
+                'id'    => 48,
+                'title' => 'data_umum_edit',
+            ],
+            [
+                'id'    => 49,
+                'title' => 'data_umum_show',
+            ],
+            [
+                'id'    => 50,
+                'title' => 'data_umum_delete',
+            ],
+            [
+                'id'    => 51,
+                'title' => 'data_umum_access',
+            ],
+            [
+                'id'    => 52,
+                'title' => 'data_khusu_create',
+            ],
+            [
+                'id'    => 53,
+                'title' => 'data_khusu_edit',
+            ],
+            [
+                'id'    => 54,
+                'title' => 'data_khusu_show',
+            ],
+            [
+                'id'    => 55,
+                'title' => 'data_khusu_delete',
+            ],
+            [
+                'id'    => 56,
+                'title' => 'data_khusu_access',
+            ],
+            [
+                'id'    => 57,
+                'title' => 'data_daerah_create',
+            ],
+            [
+                'id'    => 58,
+                'title' => 'data_daerah_edit',
+            ],
+            [
+                'id'    => 59,
+                'title' => 'data_daerah_show',
+            ],
+            [
+                'id'    => 60,
+                'title' => 'data_daerah_delete',
+            ],
+            [
+                'id'    => 61,
+                'title' => 'data_daerah_access',
+            ],
+            [
+                'id'    => 62,
+                'title' => 'data_wilayah_create',
+            ],
+            [
+                'id'    => 63,
+                'title' => 'data_wilayah_edit',
+            ],
+            [
+                'id'    => 64,
+                'title' => 'data_wilayah_show',
+            ],
+            [
+                'id'    => 65,
+                'title' => 'data_wilayah_delete',
+            ],
+            [
+                'id'    => 66,
+                'title' => 'data_wilayah_access',
+            ],
+            [
+                'id'    => 67,
+                'title' => 'data_cabang_create',
+            ],
+            [
+                'id'    => 68,
+                'title' => 'data_cabang_edit',
+            ],
+            [
+                'id'    => 69,
+                'title' => 'data_cabang_show',
+            ],
+            [
+                'id'    => 70,
+                'title' => 'data_cabang_delete',
+            ],
+            [
+                'id'    => 71,
+                'title' => 'data_cabang_access',
+            ],
+            [
+                'id'    => 72,
+                'title' => 'jenis_kerjasama_create',
+            ],
+            [
+                'id'    => 73,
+                'title' => 'jenis_kerjasama_edit',
+            ],
+            [
+                'id'    => 74,
+                'title' => 'jenis_kerjasama_show',
+            ],
+            [
+                'id'    => 75,
+                'title' => 'jenis_kerjasama_delete',
+            ],
+            [
+                'id'    => 76,
+                'title' => 'jenis_kerjasama_access',
+            ],
+            [
+                'id'    => 77,
+                'title' => 'jenis_izin_create',
+            ],
+            [
+                'id'    => 78,
+                'title' => 'jenis_izin_edit',
+            ],
+            [
+                'id'    => 79,
+                'title' => 'jenis_izin_show',
+            ],
+            [
+                'id'    => 80,
+                'title' => 'jenis_izin_delete',
+            ],
+            [
+                'id'    => 81,
+                'title' => 'jenis_izin_access',
+            ],
         ];
 
         Permission::insert($permissions);

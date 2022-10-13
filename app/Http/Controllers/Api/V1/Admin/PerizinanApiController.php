@@ -20,7 +20,7 @@ class PerizinanApiController extends Controller
     {
         abort_if(Gate::denies('perizinan_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new PerizinanResource(Perizinan::all());
+        return new PerizinanResource(Perizinan::with(['jenisIzin'])->get());
     }
 
     public function store(StorePerizinanRequest $request)
@@ -40,7 +40,7 @@ class PerizinanApiController extends Controller
     {
         abort_if(Gate::denies('perizinan_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new PerizinanResource($perizinan);
+        return new PerizinanResource($perizinan->load(['jenisIzin']));
     }
 
     public function update(UpdatePerizinanRequest $request, Perizinan $perizinan)

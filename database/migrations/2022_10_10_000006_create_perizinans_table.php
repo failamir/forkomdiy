@@ -10,7 +10,7 @@ class CreatePerizinansTable extends Migration
     {
         Schema::create('perizinans', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('jenis_izin')->nullable();
+            $table->string('nama_izin')->nullable();
             $table->string('instansi_penerbit')->nullable();
             $table->string('nomor_izin')->nullable();
             $table->date('masa_berlaku')->nullable();

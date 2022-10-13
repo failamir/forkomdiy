@@ -25,8 +25,13 @@ class StorePerizinanRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'jenis_izin' => [
+            'nama_izin' => [
                 'string',
+                'nullable',
+            ],
+            'jenis_izin_id' => [
+                'integer',
+                'exists:jenis_izins,id',
                 'nullable',
             ],
             'instansi_penerbit' => [
