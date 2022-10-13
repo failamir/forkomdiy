@@ -45,8 +45,16 @@
                             @include('components.table.sort', ['field' => 'id'])
                         </th>
                         <th>
+                            {{ trans('cruds.perizinan.fields.nama_izin') }}
+                            @include('components.table.sort', ['field' => 'nama_izin'])
+                        </th>
+                        <th>
                             {{ trans('cruds.perizinan.fields.jenis_izin') }}
-                            @include('components.table.sort', ['field' => 'jenis_izin'])
+                            @include('components.table.sort', ['field' => 'jenis_izin.nama_jenis'])
+                        </th>
+                        <th>
+                            {{ trans('cruds.jenisIzin.fields.nama_jenis') }}
+                            @include('components.table.sort', ['field' => 'jenis_izin.nama_jenis'])
                         </th>
                         <th>
                             {{ trans('cruds.perizinan.fields.instansi_penerbit') }}
@@ -77,7 +85,17 @@
                                 {{ $perizinan->id }}
                             </td>
                             <td>
-                                {{ $perizinan->jenis_izin }}
+                                {{ $perizinan->nama_izin }}
+                            </td>
+                            <td>
+                                @if($perizinan->jenisIzin)
+                                    <span class="badge badge-relationship">{{ $perizinan->jenisIzin->nama_jenis ?? '' }}</span>
+                                @endif
+                            </td>
+                            <td>
+                                @if($perizinan->jenisIzin)
+                                    {{ $perizinan->jenisIzin->nama_jenis ?? '' }}
+                                @endif
                             </td>
                             <td>
                                 {{ $perizinan->instansi_penerbit }}

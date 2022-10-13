@@ -45,6 +45,87 @@
                     </a>
                 </li>
 
+                @can('data_umum_access')
+                    <li class="items-center">
+                        <a class="{{ request()->is("admin/data-umums*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.data-umums.index") }}">
+                            <i class="fa-fw c-sidebar-nav-icon fas fa-atlas">
+                            </i>
+                            {{ trans('cruds.dataUmum.title') }}
+                        </a>
+                    </li>
+                @endcan
+                @can('data_stakeholder_access')
+                    <li class="items-center">
+                        <a class="{{ request()->is("admin/data-stakeholders*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.data-stakeholders.index") }}">
+                            <i class="fa-fw c-sidebar-nav-icon fas fa-users">
+                            </i>
+                            {{ trans('cruds.dataStakeholder.title') }}
+                        </a>
+                    </li>
+                @endcan
+                @can('data_khusu_access')
+                    <li class="items-center">
+                        <a class="{{ request()->is("admin/data-khusus*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.data-khusus.index") }}">
+                            <i class="fa-fw c-sidebar-nav-icon fas fa-address-card">
+                            </i>
+                            {{ trans('cruds.dataKhusu.title') }}
+                        </a>
+                    </li>
+                @endcan
+                @can('perizinan_access')
+                    <li class="items-center">
+                        <a class="{{ request()->is("admin/perizinans*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.perizinans.index") }}">
+                            <i class="fa-fw c-sidebar-nav-icon fas fa-book">
+                            </i>
+                            {{ trans('cruds.perizinan.title') }}
+                        </a>
+                    </li>
+                @endcan
+                @can('data_daerah_access')
+                    <li class="items-center">
+                        <a class="{{ request()->is("admin/data-daerahs*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.data-daerahs.index") }}">
+                            <i class="fa-fw c-sidebar-nav-icon fas fa-globe-americas">
+                            </i>
+                            {{ trans('cruds.dataDaerah.title') }}
+                        </a>
+                    </li>
+                @endcan
+                @can('data_cabang_access')
+                    <li class="items-center">
+                        <a class="{{ request()->is("admin/data-cabangs*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.data-cabangs.index") }}">
+                            <i class="fa-fw c-sidebar-nav-icon fas fa-map-pin">
+                            </i>
+                            {{ trans('cruds.dataCabang.title') }}
+                        </a>
+                    </li>
+                @endcan
+                @can('data_wilayah_access')
+                    <li class="items-center">
+                        <a class="{{ request()->is("admin/data-wilayahs*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.data-wilayahs.index") }}">
+                            <i class="fa-fw c-sidebar-nav-icon fas fa-map-marked-alt">
+                            </i>
+                            {{ trans('cruds.dataWilayah.title') }}
+                        </a>
+                    </li>
+                @endcan
+                @can('jenis_kerjasama_access')
+                    <li class="items-center">
+                        <a class="{{ request()->is("admin/jenis-kerjasamas*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.jenis-kerjasamas.index") }}">
+                            <i class="fa-fw c-sidebar-nav-icon fas fa-handshake">
+                            </i>
+                            {{ trans('cruds.jenisKerjasama.title') }}
+                        </a>
+                    </li>
+                @endcan
+                @can('jenis_izin_access')
+                    <li class="items-center">
+                        <a class="{{ request()->is("admin/jenis-izins*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.jenis-izins.index") }}">
+                            <i class="fa-fw c-sidebar-nav-icon far fa-hand-paper">
+                            </i>
+                            {{ trans('cruds.jenisIzin.title') }}
+                        </a>
+                    </li>
+                @endcan
                 @can('user_management_access')
                     <li class="items-center">
                         <a class="has-sub {{ request()->is("admin/permissions*")||request()->is("admin/roles*")||request()->is("admin/users*")||request()->is("admin/audit-logs*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="#" onclick="window.openSubNav(this)">
@@ -90,24 +171,6 @@
                                 </li>
                             @endcan
                         </ul>
-                    </li>
-                @endcan
-                @can('perizinan_access')
-                    <li class="items-center">
-                        <a class="{{ request()->is("admin/perizinans*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.perizinans.index") }}">
-                            <i class="fa-fw c-sidebar-nav-icon fas fa-book">
-                            </i>
-                            {{ trans('cruds.perizinan.title') }}
-                        </a>
-                    </li>
-                @endcan
-                @can('data_stakeholder_access')
-                    <li class="items-center">
-                        <a class="{{ request()->is("admin/data-stakeholders*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.data-stakeholders.index") }}">
-                            <i class="fa-fw c-sidebar-nav-icon fas fa-users">
-                            </i>
-                            {{ trans('cruds.dataStakeholder.title') }}
-                        </a>
                     </li>
                 @endcan
                 @can('user_alert_access')

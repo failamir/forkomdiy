@@ -20,15 +20,15 @@ class DataStakeholderApiController extends Controller
     {
         abort_if(Gate::denies('data_stakeholder_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new DataStakeholderResource(DataStakeholder::all());
+        return new DataStakeholderResource(DataStakeholder::with(['daerah', 'kontakDiLembaga', 'kontakDiStakeholder', 'jenisKerjasama'])->get());
     }
 
     public function store(StoreDataStakeholderRequest $request)
     {
         $dataStakeholder = DataStakeholder::create($request->validated());
 
-        if ($request->input('data_stakeholder_lampiran', false)) {
-            $dataStakeholder->addMedia(storage_path('tmp/uploads/' . basename($request->input('data_stakeholder_lampiran'))))->toMediaCollection('data_stakeholder_lampiran');
+        foreach ($request->input('data_stakeholder_lampiran', []) as $file) {
+            $dataStakeholder->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('data_stakeholder_lampiran');
         }
 
         return (new DataStakeholderResource($dataStakeholder))
@@ -40,22 +40,25 @@ class DataStakeholderApiController extends Controller
     {
         abort_if(Gate::denies('data_stakeholder_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new DataStakeholderResource($dataStakeholder);
+        return new DataStakeholderResource($dataStakeholder->load(['daerah', 'kontakDiLembaga', 'kontakDiStakeholder', 'jenisKerjasama']));
     }
 
     public function update(UpdateDataStakeholderRequest $request, DataStakeholder $dataStakeholder)
     {
         $dataStakeholder->update($request->validated());
 
-        if ($request->input('data_stakeholder_lampiran', false)) {
-            if (!$dataStakeholder->data_stakeholder_lampiran || $request->input('data_stakeholder_lampiran') !== $dataStakeholder->data_stakeholder_lampiran->file_name) {
-                if ($dataStakeholder->data_stakeholder_lampiran) {
-                    $dataStakeholder->data_stakeholder_lampiran->delete();
+        if (count($dataStakeholder->data_stakeholder_lampiran) > 0) {
+            foreach ($dataStakeholder->data_stakeholder_lampiran as $media) {
+                if (!in_array($media->file_name, $request->input('data_stakeholder_lampiran', []))) {
+                    $media->delete();
                 }
-                $dataStakeholder->addMedia(storage_path('tmp/uploads/' . basename($request->input('data_stakeholder_lampiran'))))->toMediaCollection('data_stakeholder_lampiran');
             }
-        } elseif ($dataStakeholder->data_stakeholder_lampiran) {
-            $dataStakeholder->data_stakeholder_lampiran->delete();
+        }
+        $media = $dataStakeholder->data_stakeholder_lampiran->pluck('file_name')->toArray();
+        foreach ($request->input('data_stakeholder_lampiran', []) as $file) {
+            if (count($media) === 0 || !in_array($file, $media)) {
+                $dataStakeholder->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('data_stakeholder_lampiran');
+            }
         }
 
         return (new DataStakeholderResource($dataStakeholder))

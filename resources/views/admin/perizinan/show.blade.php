@@ -27,10 +27,20 @@
                         </tr>
                         <tr>
                             <th>
+                                {{ trans('cruds.perizinan.fields.nama_izin') }}
+                            </th>
+                            <td>
+                                {{ $perizinan->nama_izin }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
                                 {{ trans('cruds.perizinan.fields.jenis_izin') }}
                             </th>
                             <td>
-                                {{ $perizinan->jenis_izin }}
+                                @if($perizinan->jenisIzin)
+                                    <span class="badge badge-relationship">{{ $perizinan->jenisIzin->nama_jenis ?? '' }}</span>
+                                @endif
                             </td>
                         </tr>
                         <tr>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Perizinan;
 
+use App\Models\JenisIzin;
 use App\Models\Perizinan;
 use Livewire\Component;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -11,6 +12,8 @@ class Create extends Component
     public Perizinan $perizinan;
 
     public array $mediaToRemove = [];
+
+    public array $listsForFields = [];
 
     public array $mediaCollections = [];
 
@@ -31,6 +34,7 @@ class Create extends Component
     public function mount(Perizinan $perizinan)
     {
         $this->perizinan = $perizinan;
+        $this->initListsForFields();
     }
 
     public function render()
@@ -60,8 +64,13 @@ class Create extends Component
     protected function rules(): array
     {
         return [
-            'perizinan.jenis_izin' => [
+            'perizinan.nama_izin' => [
                 'string',
+                'nullable',
+            ],
+            'perizinan.jenis_izin_id' => [
+                'integer',
+                'exists:jenis_izins,id',
                 'nullable',
             ],
             'perizinan.instansi_penerbit' => [
@@ -85,5 +94,10 @@ class Create extends Component
                 'exists:media,id',
             ],
         ];
+    }
+
+    protected function initListsForFields(): void
+    {
+        $this->listsForFields['jenis_izin'] = JenisIzin::pluck('nama_jenis', 'id')->toArray();
     }
 }

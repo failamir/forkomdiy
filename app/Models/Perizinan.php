@@ -22,7 +22,8 @@ class Perizinan extends Model implements HasMedia
 
     public $orderable = [
         'id',
-        'jenis_izin',
+        'nama_izin',
+        'jenis_izin.nama_jenis',
         'instansi_penerbit',
         'nomor_izin',
         'masa_berlaku',
@@ -30,7 +31,8 @@ class Perizinan extends Model implements HasMedia
 
     public $filterable = [
         'id',
-        'jenis_izin',
+        'nama_izin',
+        'jenis_izin.nama_jenis',
         'instansi_penerbit',
         'nomor_izin',
         'masa_berlaku',
@@ -48,11 +50,17 @@ class Perizinan extends Model implements HasMedia
     ];
 
     protected $fillable = [
-        'jenis_izin',
+        'nama_izin',
+        'jenis_izin_id',
         'instansi_penerbit',
         'nomor_izin',
         'masa_berlaku',
     ];
+
+    public function jenisIzin()
+    {
+        return $this->belongsTo(JenisIzin::class);
+    }
 
     public function getMasaBerlakuAttribute($value)
     {

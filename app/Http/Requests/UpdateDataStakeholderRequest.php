@@ -29,16 +29,24 @@ class UpdateDataStakeholderRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'kontak_di_lembaga' => [
-                'string',
+            'daerah_id' => [
+                'integer',
+                'exists:data_daerahs,id',
                 'nullable',
             ],
-            'kontak_di_stakeholder' => [
-                'string',
+            'kontak_di_lembaga_id' => [
+                'integer',
+                'exists:users,id',
                 'nullable',
             ],
-            'jenis_kerjasama' => [
-                'string',
+            'kontak_di_stakeholder_id' => [
+                'integer',
+                'exists:users,id',
+                'nullable',
+            ],
+            'jenis_kerjasama_id' => [
+                'integer',
+                'exists:jenis_kerjasamas,id',
                 'nullable',
             ],
             'jangkauan_kerjasama' => [
@@ -46,8 +54,8 @@ class UpdateDataStakeholderRequest extends FormRequest
                 'nullable',
             ],
             'lama_kerjasama' => [
-                'string',
                 'nullable',
+                'in:' . implode(',', array_keys(DataStakeholder::LAMA_KERJASAMA_SELECT)),
             ],
         ];
     }

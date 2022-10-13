@@ -82,7 +82,7 @@ return [
         'zero_selected' => 'Tidak ada baris yang dipilih',
     ],
     'billing' => [
-        'menu'                        => 'Billing',
+        'menu'                        => 'Tagihan',
         'current_plan'                => 'Plan anda saat ini',
         'choose_this_plan'            => 'Pilih \"Plan\" ini',
         'month'                       => 'Bulan',
@@ -125,7 +125,7 @@ return [
     'attachment'                           => 'Lampiran',
     'axis'                                 => 'Axis',
     'back_to_list'                         => 'Kembali ke daftar',
-    'basic_crm'                            => 'Basic CRM',
+    'basic_crm'                            => 'CRM Standar',
     'budget'                               => 'Anggaran',
     'calendar_sources'                     => 'Sumber Kalender',
     'campaign'                             => 'Campaign',

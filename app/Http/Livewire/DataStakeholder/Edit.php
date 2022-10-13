@@ -2,13 +2,18 @@
 
 namespace App\Http\Livewire\DataStakeholder;
 
+use App\Models\DataDaerah;
 use App\Models\DataStakeholder;
+use App\Models\JenisKerjasama;
+use App\Models\User;
 use Livewire\Component;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Edit extends Component
 {
     public array $mediaToRemove = [];
+
+    public array $listsForFields = [];
 
     public array $mediaCollections = [];
 
@@ -35,7 +40,8 @@ class Edit extends Component
 
     public function mount(DataStakeholder $dataStakeholder)
     {
-        $this->dataStakeholder  = $dataStakeholder;
+        $this->dataStakeholder = $dataStakeholder;
+        $this->initListsForFields();
         $this->mediaCollections = [
             'data_stakeholder_lampiran' => $dataStakeholder->lampiran,
         ];
@@ -72,16 +78,24 @@ class Edit extends Component
                 'string',
                 'nullable',
             ],
-            'dataStakeholder.kontak_di_lembaga' => [
-                'string',
+            'dataStakeholder.daerah_id' => [
+                'integer',
+                'exists:data_daerahs,id',
                 'nullable',
             ],
-            'dataStakeholder.kontak_di_stakeholder' => [
-                'string',
+            'dataStakeholder.kontak_di_lembaga_id' => [
+                'integer',
+                'exists:users,id',
                 'nullable',
             ],
-            'dataStakeholder.jenis_kerjasama' => [
-                'string',
+            'dataStakeholder.kontak_di_stakeholder_id' => [
+                'integer',
+                'exists:users,id',
+                'nullable',
+            ],
+            'dataStakeholder.jenis_kerjasama_id' => [
+                'integer',
+                'exists:jenis_kerjasamas,id',
                 'nullable',
             ],
             'dataStakeholder.jangkauan_kerjasama' => [
@@ -89,8 +103,8 @@ class Edit extends Component
                 'nullable',
             ],
             'dataStakeholder.lama_kerjasama' => [
-                'string',
                 'nullable',
+                'in:' . implode(',', array_keys($this->listsForFields['lama_kerjasama'])),
             ],
             'mediaCollections.data_stakeholder_lampiran' => [
                 'array',
@@ -101,5 +115,14 @@ class Edit extends Component
                 'exists:media,id',
             ],
         ];
+    }
+
+    protected function initListsForFields(): void
+    {
+        $this->listsForFields['daerah']                = DataDaerah::pluck('nama_daerah', 'id')->toArray();
+        $this->listsForFields['kontak_di_lembaga']     = User::pluck('name', 'id')->toArray();
+        $this->listsForFields['kontak_di_stakeholder'] = User::pluck('name', 'id')->toArray();
+        $this->listsForFields['jenis_kerjasama']       = JenisKerjasama::pluck('nama_jenis', 'id')->toArray();
+        $this->listsForFields['lama_kerjasama']        = $this->dataStakeholder::LAMA_KERJASAMA_SELECT;
     }
 }

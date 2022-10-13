@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\WithCSVImport;
 use App\Models\DataStakeholder;
 use Gate;
 use Illuminate\Http\Request;
@@ -10,6 +11,13 @@ use Illuminate\Http\Response;
 
 class DataStakeholderController extends Controller
 {
+    use WithCSVImport;
+
+    public function __construct()
+    {
+        $this->csvImportModel = DataStakeholder::class;
+    }
+
     public function index()
     {
         abort_if(Gate::denies('data_stakeholder_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
@@ -34,6 +42,8 @@ class DataStakeholderController extends Controller
     public function show(DataStakeholder $dataStakeholder)
     {
         abort_if(Gate::denies('data_stakeholder_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $dataStakeholder->load('daerah', 'kontakDiLembaga', 'kontakDiStakeholder', 'jenisKerjasama');
 
         return view('admin.data-stakeholder.show', compact('dataStakeholder'));
     }
