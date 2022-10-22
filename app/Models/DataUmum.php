@@ -77,7 +77,7 @@ class DataUmum extends Model implements HasMedia
 
     public function ketua()
     {
-        return $this->belongsTo(DataStakeholder::class);
+        return $this->belongsTo(Ketua::class);
     }
 
     public function perizinan()
