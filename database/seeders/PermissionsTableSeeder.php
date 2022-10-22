@@ -152,187 +152,207 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 36,
-                'title' => 'contact_management_access',
-            ],
-            [
-                'id'    => 37,
                 'title' => 'contact_company_create',
             ],
             [
-                'id'    => 38,
+                'id'    => 37,
                 'title' => 'contact_company_edit',
             ],
             [
-                'id'    => 39,
+                'id'    => 38,
                 'title' => 'contact_company_show',
             ],
             [
-                'id'    => 40,
+                'id'    => 39,
                 'title' => 'contact_company_delete',
             ],
             [
-                'id'    => 41,
+                'id'    => 40,
                 'title' => 'contact_company_access',
             ],
             [
-                'id'    => 42,
+                'id'    => 41,
                 'title' => 'contact_contact_create',
             ],
             [
-                'id'    => 43,
+                'id'    => 42,
                 'title' => 'contact_contact_edit',
             ],
             [
-                'id'    => 44,
+                'id'    => 43,
                 'title' => 'contact_contact_show',
             ],
             [
-                'id'    => 45,
+                'id'    => 44,
                 'title' => 'contact_contact_delete',
             ],
             [
-                'id'    => 46,
+                'id'    => 45,
                 'title' => 'contact_contact_access',
             ],
             [
-                'id'    => 47,
+                'id'    => 46,
                 'title' => 'data_umum_create',
             ],
             [
-                'id'    => 48,
+                'id'    => 47,
                 'title' => 'data_umum_edit',
             ],
             [
-                'id'    => 49,
+                'id'    => 48,
                 'title' => 'data_umum_show',
             ],
             [
-                'id'    => 50,
+                'id'    => 49,
                 'title' => 'data_umum_delete',
             ],
             [
-                'id'    => 51,
+                'id'    => 50,
                 'title' => 'data_umum_access',
             ],
             [
-                'id'    => 52,
+                'id'    => 51,
                 'title' => 'data_khusu_create',
             ],
             [
-                'id'    => 53,
+                'id'    => 52,
                 'title' => 'data_khusu_edit',
             ],
             [
-                'id'    => 54,
+                'id'    => 53,
                 'title' => 'data_khusu_show',
             ],
             [
-                'id'    => 55,
+                'id'    => 54,
                 'title' => 'data_khusu_delete',
             ],
             [
-                'id'    => 56,
+                'id'    => 55,
                 'title' => 'data_khusu_access',
             ],
             [
-                'id'    => 57,
+                'id'    => 56,
                 'title' => 'data_daerah_create',
             ],
             [
-                'id'    => 58,
+                'id'    => 57,
                 'title' => 'data_daerah_edit',
             ],
             [
-                'id'    => 59,
+                'id'    => 58,
                 'title' => 'data_daerah_show',
             ],
             [
-                'id'    => 60,
+                'id'    => 59,
                 'title' => 'data_daerah_delete',
             ],
             [
-                'id'    => 61,
+                'id'    => 60,
                 'title' => 'data_daerah_access',
             ],
             [
-                'id'    => 62,
+                'id'    => 61,
                 'title' => 'data_wilayah_create',
             ],
             [
-                'id'    => 63,
+                'id'    => 62,
                 'title' => 'data_wilayah_edit',
             ],
             [
-                'id'    => 64,
+                'id'    => 63,
                 'title' => 'data_wilayah_show',
             ],
             [
-                'id'    => 65,
+                'id'    => 64,
                 'title' => 'data_wilayah_delete',
             ],
             [
-                'id'    => 66,
+                'id'    => 65,
                 'title' => 'data_wilayah_access',
             ],
             [
-                'id'    => 67,
+                'id'    => 66,
                 'title' => 'data_cabang_create',
             ],
             [
-                'id'    => 68,
+                'id'    => 67,
                 'title' => 'data_cabang_edit',
             ],
             [
-                'id'    => 69,
+                'id'    => 68,
                 'title' => 'data_cabang_show',
             ],
             [
-                'id'    => 70,
+                'id'    => 69,
                 'title' => 'data_cabang_delete',
             ],
             [
-                'id'    => 71,
+                'id'    => 70,
                 'title' => 'data_cabang_access',
             ],
             [
-                'id'    => 72,
+                'id'    => 71,
                 'title' => 'jenis_kerjasama_create',
             ],
             [
-                'id'    => 73,
+                'id'    => 72,
                 'title' => 'jenis_kerjasama_edit',
             ],
             [
-                'id'    => 74,
+                'id'    => 73,
                 'title' => 'jenis_kerjasama_show',
             ],
             [
-                'id'    => 75,
+                'id'    => 74,
                 'title' => 'jenis_kerjasama_delete',
             ],
             [
-                'id'    => 76,
+                'id'    => 75,
                 'title' => 'jenis_kerjasama_access',
             ],
             [
-                'id'    => 77,
+                'id'    => 76,
                 'title' => 'jenis_izin_create',
             ],
             [
-                'id'    => 78,
+                'id'    => 77,
                 'title' => 'jenis_izin_edit',
             ],
             [
-                'id'    => 79,
+                'id'    => 78,
                 'title' => 'jenis_izin_show',
             ],
             [
-                'id'    => 80,
+                'id'    => 79,
                 'title' => 'jenis_izin_delete',
             ],
             [
-                'id'    => 81,
+                'id'    => 80,
                 'title' => 'jenis_izin_access',
+            ],
+            [
+                'id'    => 81,
+                'title' => 'master_data_access',
+            ],
+            [
+                'id'    => 82,
+                'title' => 'ketua_create',
+            ],
+            [
+                'id'    => 83,
+                'title' => 'ketua_edit',
+            ],
+            [
+                'id'    => 84,
+                'title' => 'ketua_show',
+            ],
+            [
+                'id'    => 85,
+                'title' => 'ketua_delete',
+            ],
+            [
+                'id'    => 86,
+                'title' => 'ketua_access',
             ],
         ];
 
