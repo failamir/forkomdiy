@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\DataWilayahController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\JenisIzinController;
 use App\Http\Controllers\Admin\JenisKerjasamaController;
+use App\Http\Controllers\Admin\KetuaController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\PerizinanController;
 use App\Http\Controllers\Admin\PermissionController;
@@ -101,6 +102,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
 
     // Jenis Izin
     Route::resource('jenis-izins', JenisIzinController::class, ['except' => ['store', 'update', 'destroy']]);
+
+    // Ketua
+    Route::resource('ketuas', KetuaController::class, ['except' => ['store', 'update', 'destroy']]);
 
     // Messages
     Route::get('messages', [MessageController::class, 'index'])->name('messages.index');
