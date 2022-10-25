@@ -20,7 +20,7 @@ class DataUmumApiController extends Controller
     {
         abort_if(Gate::denies('data_umum_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new DataUmumResource(DataUmum::with(['ketua', 'perizinan'])->get());
+        return new DataUmumResource(DataUmum::with(['ketua', 'perizinan', 'province', 'owner'])->get());
     }
 
     public function store(StoreDataUmumRequest $request)
@@ -40,7 +40,7 @@ class DataUmumApiController extends Controller
     {
         abort_if(Gate::denies('data_umum_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new DataUmumResource($dataUmum->load(['ketua', 'perizinan']));
+        return new DataUmumResource($dataUmum->load(['ketua', 'perizinan', 'province', 'owner']));
     }
 
     public function update(UpdateDataUmumRequest $request, DataUmum $dataUmum)

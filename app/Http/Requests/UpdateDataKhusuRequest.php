@@ -25,49 +25,23 @@ class UpdateDataKhusuRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nama_daerah' => [
+            'regency_id' => [
+                'integer',
+                'exists:regencies,id',
+                'nullable',
+            ],
+            'nama_ketua' => [
                 'string',
                 'nullable',
             ],
-            'data_daerah_id' => [
-                'integer',
-                'exists:data_daerahs,id',
-                'nullable',
-            ],
-            'jumlah_anggota_daerah' => [
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
-                'nullable',
-            ],
-            'nama_cabang' => [
+            'kontak_hp_wa' => [
                 'string',
                 'nullable',
             ],
-            'jumlah_anggota_cabang' => [
+            'jumlah_anggota' => [
                 'integer',
                 'min:-2147483648',
                 'max:2147483647',
-                'nullable',
-            ],
-            'data_cabang_id' => [
-                'integer',
-                'exists:data_cabangs,id',
-                'nullable',
-            ],
-            'nama_sub_wilayah' => [
-                'string',
-                'nullable',
-            ],
-            'jumlah_anggota_sub_wilayah' => [
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
-                'nullable',
-            ],
-            'data_sub_wilayah_lain_id' => [
-                'integer',
-                'exists:data_wilayahs,id',
                 'nullable',
             ],
         ];

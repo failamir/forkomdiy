@@ -35,8 +35,6 @@ class ContactContactController extends Controller
     {
         abort_if(Gate::denies('contact_contact_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $contactContact->load('company');
-
         return view('admin.contact-contact.show', compact('contactContact'));
     }
 }

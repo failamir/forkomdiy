@@ -2,20 +2,16 @@
 
 namespace App\Http\Livewire\ContactContact;
 
-use App\Models\ContactCompany;
 use App\Models\ContactContact;
 use Livewire\Component;
 
 class Create extends Component
 {
-    public array $listsForFields = [];
-
     public ContactContact $contactContact;
 
     public function mount(ContactContact $contactContact)
     {
         $this->contactContact = $contactContact;
-        $this->initListsForFields();
     }
 
     public function render()
@@ -35,11 +31,6 @@ class Create extends Component
     protected function rules(): array
     {
         return [
-            'contactContact.company_id' => [
-                'integer',
-                'exists:contact_companies,id',
-                'required',
-            ],
             'contactContact.contact_first_name' => [
                 'string',
                 'nullable',
@@ -60,19 +51,10 @@ class Create extends Component
                 'string',
                 'nullable',
             ],
-            'contactContact.contact_skype' => [
-                'string',
-                'nullable',
-            ],
             'contactContact.contact_address' => [
                 'string',
                 'nullable',
             ],
         ];
-    }
-
-    protected function initListsForFields(): void
-    {
-        $this->listsForFields['company'] = ContactCompany::pluck('company_name', 'id')->toArray();
     }
 }

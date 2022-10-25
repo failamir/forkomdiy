@@ -47,8 +47,27 @@
                             @include('components.table.sort', ['field' => 'id'])
                         </th>
                         <th>
-                            {{ trans('cruds.dataDaerah.fields.nama_daerah') }}
-                            @include('components.table.sort', ['field' => 'nama_daerah'])
+                            {{ trans('cruds.dataDaerah.fields.regency') }}
+                            @include('components.table.sort', ['field' => 'regency.regency_name'])
+                        </th>
+                        <th>
+                            {{ trans('cruds.regency.fields.id_regency') }}
+                            @include('components.table.sort', ['field' => 'regency.id_regency'])
+                        </th>
+                        <th>
+                            {{ trans('cruds.dataDaerah.fields.nama_ketua') }}
+                            @include('components.table.sort', ['field' => 'nama_ketua'])
+                        </th>
+                        <th>
+                            {{ trans('cruds.dataDaerah.fields.kontak_hp_wa') }}
+                            @include('components.table.sort', ['field' => 'kontak_hp_wa'])
+                        </th>
+                        <th>
+                            {{ trans('cruds.dataDaerah.fields.jumlah_anggota') }}
+                            @include('components.table.sort', ['field' => 'jumlah_anggota'])
+                        </th>
+                        <th>
+                            {{ trans('cruds.dataDaerah.fields.lampiran') }}
                         </th>
                         <th>
                         </th>
@@ -64,7 +83,32 @@
                                 {{ $dataDaerah->id }}
                             </td>
                             <td>
-                                {{ $dataDaerah->nama_daerah }}
+                                @if($dataDaerah->regency)
+                                    <span class="badge badge-relationship">{{ $dataDaerah->regency->regency_name ?? '' }}</span>
+                                @endif
+                            </td>
+                            <td>
+                                @if($dataDaerah->regency)
+                                    {{ $dataDaerah->regency->id_regency ?? '' }}
+                                @endif
+                            </td>
+                            <td>
+                                {{ $dataDaerah->nama_ketua }}
+                            </td>
+                            <td>
+                                {{ $dataDaerah->kontak_hp_wa }}
+                            </td>
+                            <td>
+                                {{ $dataDaerah->jumlah_anggota }}
+                            </td>
+                            <td>
+                                @foreach($dataDaerah->lampiran as $key => $entry)
+                                    <a class="link-light-blue" href="{{ $entry['url'] }}">
+                                        <i class="far fa-file">
+                                        </i>
+                                        {{ $entry['file_name'] }}
+                                    </a>
+                                @endforeach
                             </td>
                             <td>
                                 <div class="flex justify-end">

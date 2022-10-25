@@ -69,7 +69,7 @@ class Index extends Component
 
     public function render()
     {
-        $query = DataUmum::with(['ketua', 'perizinan'])->advancedFilter([
+        $query = DataUmum::with(['ketua', 'perizinan', 'province', 'owner'])->advancedFilter([
             's'               => $this->search ?: null,
             'order_column'    => $this->sortBy,
             'order_direction' => $this->sortDirection,

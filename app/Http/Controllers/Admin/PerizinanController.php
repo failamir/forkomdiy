@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\WithCSVImport;
 use App\Models\Perizinan;
 use Gate;
 use Illuminate\Http\Request;
@@ -10,6 +11,13 @@ use Illuminate\Http\Response;
 
 class PerizinanController extends Controller
 {
+    use WithCSVImport;
+
+    public function __construct()
+    {
+        $this->csvImportModel = Perizinan::class;
+    }
+
     public function index()
     {
         abort_if(Gate::denies('perizinan_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
@@ -35,7 +43,7 @@ class PerizinanController extends Controller
     {
         abort_if(Gate::denies('perizinan_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $perizinan->load('jenisIzin');
+        $perizinan->load('owner');
 
         return view('admin.perizinan.show', compact('perizinan'));
     }

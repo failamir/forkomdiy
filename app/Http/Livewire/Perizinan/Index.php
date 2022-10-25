@@ -69,7 +69,7 @@ class Index extends Component
 
     public function render()
     {
-        $query = Perizinan::with(['jenisIzin'])->advancedFilter([
+        $query = Perizinan::with(['owner'])->advancedFilter([
             's'               => $this->search ?: null,
             'order_column'    => $this->sortBy,
             'order_direction' => $this->sortDirection,

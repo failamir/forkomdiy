@@ -18,25 +18,21 @@ class ContactContact extends Model
 
     public $orderable = [
         'id',
-        'company.company_name',
         'contact_first_name',
         'contact_last_name',
         'contact_phone_1',
         'contact_phone_2',
         'contact_email',
-        'contact_skype',
         'contact_address',
     ];
 
     public $filterable = [
         'id',
-        'company.company_name',
         'contact_first_name',
         'contact_last_name',
         'contact_phone_1',
         'contact_phone_2',
         'contact_email',
-        'contact_skype',
         'contact_address',
     ];
 
@@ -47,20 +43,13 @@ class ContactContact extends Model
     ];
 
     protected $fillable = [
-        'company_id',
         'contact_first_name',
         'contact_last_name',
         'contact_phone_1',
         'contact_phone_2',
         'contact_email',
-        'contact_skype',
         'contact_address',
     ];
-
-    public function company()
-    {
-        return $this->belongsTo(ContactCompany::class);
-    }
 
     protected function serializeDate(DateTimeInterface $date)
     {

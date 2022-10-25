@@ -35,16 +35,6 @@
                         </tr>
                         <tr>
                             <th>
-                                {{ trans('cruds.perizinan.fields.jenis_izin') }}
-                            </th>
-                            <td>
-                                @if($perizinan->jenisIzin)
-                                    <span class="badge badge-relationship">{{ $perizinan->jenisIzin->nama_jenis ?? '' }}</span>
-                                @endif
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
                                 {{ trans('cruds.perizinan.fields.instansi_penerbit') }}
                             </th>
                             <td>
@@ -61,10 +51,18 @@
                         </tr>
                         <tr>
                             <th>
-                                {{ trans('cruds.perizinan.fields.masa_berlaku') }}
+                                {{ trans('cruds.perizinan.fields.tanggal_dikeluarkan') }}
                             </th>
                             <td>
-                                {{ $perizinan->masa_berlaku }}
+                                {{ $perizinan->tanggal_dikeluarkan }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                {{ trans('cruds.perizinan.fields.berlaku_sampai') }}
+                            </th>
+                            <td>
+                                {{ $perizinan->berlaku_sampai }}
                             </td>
                         </tr>
                         <tr>

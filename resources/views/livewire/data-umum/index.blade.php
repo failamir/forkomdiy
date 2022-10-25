@@ -51,10 +51,6 @@
                             @include('components.table.sort', ['field' => 'nama_lembaga'])
                         </th>
                         <th>
-                            {{ trans('cruds.dataUmum.fields.nick_name') }}
-                            @include('components.table.sort', ['field' => 'nick_name'])
-                        </th>
-                        <th>
                             {{ trans('cruds.dataUmum.fields.ketua') }}
                             @include('components.table.sort', ['field' => 'ketua.nama_stakeholder'])
                         </th>
@@ -102,6 +98,14 @@
                             {{ trans('cruds.dataUmum.fields.lampiran') }}
                         </th>
                         <th>
+                            {{ trans('cruds.dataUmum.fields.province') }}
+                            @include('components.table.sort', ['field' => 'province.province_name'])
+                        </th>
+                        <th>
+                            {{ trans('cruds.province.fields.id_province') }}
+                            @include('components.table.sort', ['field' => 'province.id_province'])
+                        </th>
+                        <th>
                         </th>
                     </tr>
                 </thead>
@@ -116,9 +120,6 @@
                             </td>
                             <td>
                                 {{ $dataUmum->nama_lembaga }}
-                            </td>
-                            <td>
-                                {{ $dataUmum->nick_name }}
                             </td>
                             <td>
                                 @if($dataUmum->ketua)
@@ -169,6 +170,16 @@
                                         {{ $entry['file_name'] }}
                                     </a>
                                 @endforeach
+                            </td>
+                            <td>
+                                @if($dataUmum->province)
+                                    <span class="badge badge-relationship">{{ $dataUmum->province->province_name ?? '' }}</span>
+                                @endif
+                            </td>
+                            <td>
+                                @if($dataUmum->province)
+                                    {{ $dataUmum->province->id_province ?? '' }}
+                                @endif
                             </td>
                             <td>
                                 <div class="flex justify-end">

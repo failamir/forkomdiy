@@ -43,7 +43,7 @@ class DataUmumController extends Controller
     {
         abort_if(Gate::denies('data_umum_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $dataUmum->load('ketua', 'perizinan');
+        $dataUmum->load('ketua', 'perizinan', 'province', 'owner');
 
         return view('admin.data-umum.show', compact('dataUmum'));
     }

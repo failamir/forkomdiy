@@ -29,10 +29,6 @@ class UpdateDataUmumRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'nick_name' => [
-                'string',
-                'nullable',
-            ],
             'ketua_id' => [
                 'integer',
                 'exists:data_stakeholders,id',
@@ -71,6 +67,11 @@ class UpdateDataUmumRequest extends FormRequest
                 'integer',
                 'min:-2147483648',
                 'max:2147483647',
+                'nullable',
+            ],
+            'province_id' => [
+                'integer',
+                'exists:provinces,id',
                 'nullable',
             ],
         ];

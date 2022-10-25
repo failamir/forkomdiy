@@ -27,10 +27,50 @@
                         </tr>
                         <tr>
                             <th>
-                                {{ trans('cruds.dataDaerah.fields.nama_daerah') }}
+                                {{ trans('cruds.dataDaerah.fields.regency') }}
                             </th>
                             <td>
-                                {{ $dataDaerah->nama_daerah }}
+                                @if($dataDaerah->regency)
+                                    <span class="badge badge-relationship">{{ $dataDaerah->regency->regency_name ?? '' }}</span>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                {{ trans('cruds.dataDaerah.fields.nama_ketua') }}
+                            </th>
+                            <td>
+                                {{ $dataDaerah->nama_ketua }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                {{ trans('cruds.dataDaerah.fields.kontak_hp_wa') }}
+                            </th>
+                            <td>
+                                {{ $dataDaerah->kontak_hp_wa }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                {{ trans('cruds.dataDaerah.fields.jumlah_anggota') }}
+                            </th>
+                            <td>
+                                {{ $dataDaerah->jumlah_anggota }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                {{ trans('cruds.dataDaerah.fields.lampiran') }}
+                            </th>
+                            <td>
+                                @foreach($dataDaerah->lampiran as $key => $entry)
+                                    <a class="link-light-blue" href="{{ $entry['url'] }}">
+                                        <i class="far fa-file">
+                                        </i>
+                                        {{ $entry['file_name'] }}
+                                    </a>
+                                @endforeach
                             </td>
                         </tr>
                     </tbody>

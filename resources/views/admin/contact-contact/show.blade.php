@@ -27,16 +27,6 @@
                         </tr>
                         <tr>
                             <th>
-                                {{ trans('cruds.contactContact.fields.company') }}
-                            </th>
-                            <td>
-                                @if($contactContact->company)
-                                    <span class="badge badge-relationship">{{ $contactContact->company->company_name ?? '' }}</span>
-                                @endif
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
                                 {{ trans('cruds.contactContact.fields.contact_first_name') }}
                             </th>
                             <td>
@@ -73,14 +63,6 @@
                             </th>
                             <td>
                                 {{ $contactContact->contact_email }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                {{ trans('cruds.contactContact.fields.contact_skype') }}
-                            </th>
-                            <td>
-                                {{ $contactContact->contact_skype }}
                             </td>
                         </tr>
                         <tr>

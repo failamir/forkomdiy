@@ -21,7 +21,9 @@
             @endif
 
 
-
+            @can('perizinan_create')
+                <x-csv-import route="{{ route('admin.perizinans.csv.store') }}" />
+            @endcan
 
         </div>
         <div class="w-full sm:w-1/2 sm:text-right">
@@ -49,14 +51,6 @@
                             @include('components.table.sort', ['field' => 'nama_izin'])
                         </th>
                         <th>
-                            {{ trans('cruds.perizinan.fields.jenis_izin') }}
-                            @include('components.table.sort', ['field' => 'jenis_izin.nama_jenis'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.jenisIzin.fields.nama_jenis') }}
-                            @include('components.table.sort', ['field' => 'jenis_izin.nama_jenis'])
-                        </th>
-                        <th>
                             {{ trans('cruds.perizinan.fields.instansi_penerbit') }}
                             @include('components.table.sort', ['field' => 'instansi_penerbit'])
                         </th>
@@ -65,8 +59,12 @@
                             @include('components.table.sort', ['field' => 'nomor_izin'])
                         </th>
                         <th>
-                            {{ trans('cruds.perizinan.fields.masa_berlaku') }}
-                            @include('components.table.sort', ['field' => 'masa_berlaku'])
+                            {{ trans('cruds.perizinan.fields.tanggal_dikeluarkan') }}
+                            @include('components.table.sort', ['field' => 'tanggal_dikeluarkan'])
+                        </th>
+                        <th>
+                            {{ trans('cruds.perizinan.fields.berlaku_sampai') }}
+                            @include('components.table.sort', ['field' => 'berlaku_sampai'])
                         </th>
                         <th>
                             {{ trans('cruds.perizinan.fields.lampiran_file') }}
@@ -88,23 +86,16 @@
                                 {{ $perizinan->nama_izin }}
                             </td>
                             <td>
-                                @if($perizinan->jenisIzin)
-                                    <span class="badge badge-relationship">{{ $perizinan->jenisIzin->nama_jenis ?? '' }}</span>
-                                @endif
-                            </td>
-                            <td>
-                                @if($perizinan->jenisIzin)
-                                    {{ $perizinan->jenisIzin->nama_jenis ?? '' }}
-                                @endif
-                            </td>
-                            <td>
                                 {{ $perizinan->instansi_penerbit }}
                             </td>
                             <td>
                                 {{ $perizinan->nomor_izin }}
                             </td>
                             <td>
-                                {{ $perizinan->masa_berlaku }}
+                                {{ $perizinan->tanggal_dikeluarkan }}
+                            </td>
+                            <td>
+                                {{ $perizinan->berlaku_sampai }}
                             </td>
                             <td>
                                 @foreach($perizinan->lampiran_file as $key => $entry)
