@@ -47,16 +47,27 @@
                             @include('components.table.sort', ['field' => 'id'])
                         </th>
                         <th>
-                            {{ trans('cruds.dataCabang.fields.nama_cabang') }}
-                            @include('components.table.sort', ['field' => 'nama_cabang'])
+                            {{ trans('cruds.dataCabang.fields.district') }}
+                            @include('components.table.sort', ['field' => 'district.district_name'])
                         </th>
                         <th>
-                            {{ trans('cruds.dataCabang.fields.daerah') }}
-                            @include('components.table.sort', ['field' => 'daerah.nama_daerah'])
+                            {{ trans('cruds.district.fields.id_district') }}
+                            @include('components.table.sort', ['field' => 'district.id_district'])
                         </th>
                         <th>
-                            {{ trans('cruds.dataDaerah.fields.nama_daerah') }}
-                            @include('components.table.sort', ['field' => 'daerah.nama_daerah'])
+                            {{ trans('cruds.dataCabang.fields.nama_ketua') }}
+                            @include('components.table.sort', ['field' => 'nama_ketua'])
+                        </th>
+                        <th>
+                            {{ trans('cruds.dataCabang.fields.kontak_hp_wa') }}
+                            @include('components.table.sort', ['field' => 'kontak_hp_wa'])
+                        </th>
+                        <th>
+                            {{ trans('cruds.dataCabang.fields.jumlah_anggota') }}
+                            @include('components.table.sort', ['field' => 'jumlah_anggota'])
+                        </th>
+                        <th>
+                            {{ trans('cruds.dataCabang.fields.lampiran') }}
                         </th>
                         <th>
                         </th>
@@ -72,17 +83,32 @@
                                 {{ $dataCabang->id }}
                             </td>
                             <td>
-                                {{ $dataCabang->nama_cabang }}
-                            </td>
-                            <td>
-                                @if($dataCabang->daerah)
-                                    <span class="badge badge-relationship">{{ $dataCabang->daerah->nama_daerah ?? '' }}</span>
+                                @if($dataCabang->district)
+                                    <span class="badge badge-relationship">{{ $dataCabang->district->district_name ?? '' }}</span>
                                 @endif
                             </td>
                             <td>
-                                @if($dataCabang->daerah)
-                                    {{ $dataCabang->daerah->nama_daerah ?? '' }}
+                                @if($dataCabang->district)
+                                    {{ $dataCabang->district->id_district ?? '' }}
                                 @endif
+                            </td>
+                            <td>
+                                {{ $dataCabang->nama_ketua }}
+                            </td>
+                            <td>
+                                {{ $dataCabang->kontak_hp_wa }}
+                            </td>
+                            <td>
+                                {{ $dataCabang->jumlah_anggota }}
+                            </td>
+                            <td>
+                                @foreach($dataCabang->lampiran as $key => $entry)
+                                    <a class="link-light-blue" href="{{ $entry['url'] }}">
+                                        <i class="far fa-file">
+                                        </i>
+                                        {{ $entry['file_name'] }}
+                                    </a>
+                                @endforeach
                             </td>
                             <td>
                                 <div class="flex justify-end">

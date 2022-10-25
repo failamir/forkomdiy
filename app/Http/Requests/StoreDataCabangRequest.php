@@ -25,13 +25,23 @@ class StoreDataCabangRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nama_cabang' => [
+            'district_id' => [
+                'integer',
+                'exists:districts,id',
+                'nullable',
+            ],
+            'nama_ketua' => [
                 'string',
                 'nullable',
             ],
-            'daerah_id' => [
+            'kontak_hp_wa' => [
+                'string',
+                'nullable',
+            ],
+            'jumlah_anggota' => [
                 'integer',
-                'exists:data_daerahs,id',
+                'min:-2147483648',
+                'max:2147483647',
                 'nullable',
             ],
         ];

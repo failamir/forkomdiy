@@ -4,6 +4,8 @@ namespace App\Models;
 
 use \DateTimeInterface;
 use App\Support\HasAdvancedFilter;
+use App\Traits\Auditable;
+use App\Traits\Tenantable;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -16,26 +18,28 @@ class Perizinan extends Model implements HasMedia
     use HasFactory;
     use HasAdvancedFilter;
     use SoftDeletes;
+    use Tenantable;
     use InteractsWithMedia;
+    use Auditable;
 
     public $table = 'perizinans';
 
     public $orderable = [
         'id',
         'nama_izin',
-        'jenis_izin.nama_jenis',
         'instansi_penerbit',
         'nomor_izin',
-        'masa_berlaku',
+        'tanggal_dikeluarkan',
+        'berlaku_sampai',
     ];
 
     public $filterable = [
         'id',
         'nama_izin',
-        'jenis_izin.nama_jenis',
         'instansi_penerbit',
         'nomor_izin',
-        'masa_berlaku',
+        'tanggal_dikeluarkan',
+        'berlaku_sampai',
     ];
 
     protected $appends = [
@@ -43,7 +47,7 @@ class Perizinan extends Model implements HasMedia
     ];
 
     protected $dates = [
-        'masa_berlaku',
+        'tanggal_dikeluarkan',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -51,25 +55,20 @@ class Perizinan extends Model implements HasMedia
 
     protected $fillable = [
         'nama_izin',
-        'jenis_izin_id',
         'instansi_penerbit',
         'nomor_izin',
-        'masa_berlaku',
+        'tanggal_dikeluarkan',
+        'berlaku_sampai',
     ];
 
-    public function jenisIzin()
-    {
-        return $this->belongsTo(JenisIzin::class);
-    }
-
-    public function getMasaBerlakuAttribute($value)
+    public function getTanggalDikeluarkanAttribute($value)
     {
         return $value ? Carbon::parse($value)->format(config('project.date_format')) : null;
     }
 
-    public function setMasaBerlakuAttribute($value)
+    public function setTanggalDikeluarkanAttribute($value)
     {
-        $this->attributes['masa_berlaku'] = $value ? Carbon::createFromFormat(config('project.date_format'), $value)->format('Y-m-d') : null;
+        $this->attributes['tanggal_dikeluarkan'] = $value ? Carbon::createFromFormat(config('project.date_format'), $value)->format('Y-m-d') : null;
     }
 
     public function getLampiranFileAttribute()
@@ -80,6 +79,11 @@ class Perizinan extends Model implements HasMedia
 
             return $media;
         });
+    }
+
+    public function owner()
+    {
+        return $this->belongsTo(User::class);
     }
 
     protected function serializeDate(DateTimeInterface $date)

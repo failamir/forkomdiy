@@ -27,20 +27,50 @@
                         </tr>
                         <tr>
                             <th>
-                                {{ trans('cruds.dataCabang.fields.nama_cabang') }}
+                                {{ trans('cruds.dataCabang.fields.district') }}
                             </th>
                             <td>
-                                {{ $dataCabang->nama_cabang }}
+                                @if($dataCabang->district)
+                                    <span class="badge badge-relationship">{{ $dataCabang->district->district_name ?? '' }}</span>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <th>
-                                {{ trans('cruds.dataCabang.fields.daerah') }}
+                                {{ trans('cruds.dataCabang.fields.nama_ketua') }}
                             </th>
                             <td>
-                                @if($dataCabang->daerah)
-                                    <span class="badge badge-relationship">{{ $dataCabang->daerah->nama_daerah ?? '' }}</span>
-                                @endif
+                                {{ $dataCabang->nama_ketua }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                {{ trans('cruds.dataCabang.fields.kontak_hp_wa') }}
+                            </th>
+                            <td>
+                                {{ $dataCabang->kontak_hp_wa }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                {{ trans('cruds.dataCabang.fields.jumlah_anggota') }}
+                            </th>
+                            <td>
+                                {{ $dataCabang->jumlah_anggota }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                {{ trans('cruds.dataCabang.fields.lampiran') }}
+                            </th>
+                            <td>
+                                @foreach($dataCabang->lampiran as $key => $entry)
+                                    <a class="link-light-blue" href="{{ $entry['url'] }}">
+                                        <i class="far fa-file">
+                                        </i>
+                                        {{ $entry['file_name'] }}
+                                    </a>
+                                @endforeach
                             </td>
                         </tr>
                     </tbody>

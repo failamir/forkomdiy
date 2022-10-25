@@ -4,6 +4,9 @@ namespace App\Models;
 
 use \DateTimeInterface;
 use App\Support\HasAdvancedFilter;
+use App\Traits\Auditable;
+use App\Traits\Tenantable;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -15,38 +18,36 @@ class DataStakeholder extends Model implements HasMedia
     use HasFactory;
     use HasAdvancedFilter;
     use SoftDeletes;
+    use Tenantable;
     use InteractsWithMedia;
-
-    public const LAMA_KERJASAMA_SELECT = [
-        '1 Tahun' => '1 Tahun',
-        '2 Tahun' => '2 Tahun',
-        '3 Tahun' => '3 Tahun',
-        '4 Tahun' => '4 Tahun',
-        '5 Tahun' => '5 Tahun',
-    ];
+    use Auditable;
 
     public $table = 'data_stakeholders';
 
     public $orderable = [
         'id',
+        'jenis_kerjasama',
+        'frekuensi_kerjasama',
+        'mulai_kerjasama',
+        'nama_lembaga_kerjasama',
         'nama_stakeholder',
-        'daerah.nama_daerah',
-        'kontak_di_lembaga.name',
-        'kontak_di_stakeholder.name',
-        'jenis_kerjasama.nama_jenis',
+        'no_hp_wa_stakeholder',
+        'kontak_di_lembaga',
+        'no_hp_wa_lembaga',
         'jangkauan_kerjasama',
-        'lama_kerjasama',
     ];
 
     public $filterable = [
         'id',
+        'jenis_kerjasama',
+        'frekuensi_kerjasama',
+        'mulai_kerjasama',
+        'nama_lembaga_kerjasama',
         'nama_stakeholder',
-        'daerah.nama_daerah',
-        'kontak_di_lembaga.name',
-        'kontak_di_stakeholder.name',
-        'jenis_kerjasama.nama_jenis',
+        'no_hp_wa_stakeholder',
+        'kontak_di_lembaga',
+        'no_hp_wa_lembaga',
         'jangkauan_kerjasama',
-        'lama_kerjasama',
     ];
 
     protected $appends = [
@@ -54,44 +55,32 @@ class DataStakeholder extends Model implements HasMedia
     ];
 
     protected $dates = [
+        'mulai_kerjasama',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
     protected $fillable = [
+        'jenis_kerjasama',
+        'frekuensi_kerjasama',
+        'mulai_kerjasama',
+        'nama_lembaga_kerjasama',
         'nama_stakeholder',
-        'daerah_id',
-        'kontak_di_lembaga_id',
-        'kontak_di_stakeholder_id',
-        'jenis_kerjasama_id',
+        'no_hp_wa_stakeholder',
+        'kontak_di_lembaga',
+        'no_hp_wa_lembaga',
         'jangkauan_kerjasama',
-        'lama_kerjasama',
     ];
 
-    public function daerah()
+    public function getMulaiKerjasamaAttribute($value)
     {
-        return $this->belongsTo(DataDaerah::class);
+        return $value ? Carbon::parse($value)->format(config('project.date_format')) : null;
     }
 
-    public function kontakDiLembaga()
+    public function setMulaiKerjasamaAttribute($value)
     {
-        return $this->belongsTo(User::class);
-    }
-
-    public function kontakDiStakeholder()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function jenisKerjasama()
-    {
-        return $this->belongsTo(JenisKerjasama::class);
-    }
-
-    public function getLamaKerjasamaLabelAttribute($value)
-    {
-        return static::LAMA_KERJASAMA_SELECT[$this->lama_kerjasama] ?? null;
+        $this->attributes['mulai_kerjasama'] = $value ? Carbon::createFromFormat(config('project.date_format'), $value)->format('Y-m-d') : null;
     }
 
     public function getLampiranAttribute()
@@ -102,6 +91,11 @@ class DataStakeholder extends Model implements HasMedia
 
             return $media;
         });
+    }
+
+    public function owner()
+    {
+        return $this->belongsTo(User::class);
     }
 
     protected function serializeDate(DateTimeInterface $date)

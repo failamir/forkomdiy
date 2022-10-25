@@ -10,16 +10,6 @@
             {{ trans('cruds.dataUmum.fields.nama_lembaga_helper') }}
         </div>
     </div>
-    <div class="form-group {{ $errors->has('dataUmum.nick_name') ? 'invalid' : '' }}">
-        <label class="form-label" for="nick_name">{{ trans('cruds.dataUmum.fields.nick_name') }}</label>
-        <input class="form-control" type="text" name="nick_name" id="nick_name" wire:model.defer="dataUmum.nick_name">
-        <div class="validation-message">
-            {{ $errors->first('dataUmum.nick_name') }}
-        </div>
-        <div class="help-block">
-            {{ trans('cruds.dataUmum.fields.nick_name_helper') }}
-        </div>
-    </div>
     <div class="form-group {{ $errors->has('dataUmum.ketua_id') ? 'invalid' : '' }}">
         <label class="form-label" for="ketua">{{ trans('cruds.dataUmum.fields.ketua') }}</label>
         <x-select-list class="form-control" id="ketua" name="ketua" :options="$this->listsForFields['ketua']" wire:model="dataUmum.ketua_id" />
@@ -32,7 +22,7 @@
     </div>
     <div class="form-group {{ $errors->has('dataUmum.sekretariat_wilayah') ? 'invalid' : '' }}">
         <label class="form-label" for="sekretariat_wilayah">{{ trans('cruds.dataUmum.fields.sekretariat_wilayah') }}</label>
-        <textarea class="form-control" name="sekretariat_wilayah" id="sekretariat_wilayah" wire:model.defer="dataUmum.sekretariat_wilayah" rows="4"></textarea>
+        <input class="form-control" type="text" name="sekretariat_wilayah" id="sekretariat_wilayah" wire:model.defer="dataUmum.sekretariat_wilayah">
         <div class="validation-message">
             {{ $errors->first('dataUmum.sekretariat_wilayah') }}
         </div>
@@ -118,6 +108,16 @@
         </div>
         <div class="help-block">
             {{ trans('cruds.dataUmum.fields.lampiran_helper') }}
+        </div>
+    </div>
+    <div class="form-group {{ $errors->has('dataUmum.province_id') ? 'invalid' : '' }}">
+        <label class="form-label" for="province">{{ trans('cruds.dataUmum.fields.province') }}</label>
+        <x-select-list class="form-control" id="province" name="province" :options="$this->listsForFields['province']" wire:model="dataUmum.province_id" />
+        <div class="validation-message">
+            {{ $errors->first('dataUmum.province_id') }}
+        </div>
+        <div class="help-block">
+            {{ trans('cruds.dataUmum.fields.province_helper') }}
         </div>
     </div>
 

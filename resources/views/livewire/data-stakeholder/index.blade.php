@@ -47,48 +47,40 @@
                             @include('components.table.sort', ['field' => 'id'])
                         </th>
                         <th>
+                            {{ trans('cruds.dataStakeholder.fields.jenis_kerjasama') }}
+                            @include('components.table.sort', ['field' => 'jenis_kerjasama'])
+                        </th>
+                        <th>
+                            {{ trans('cruds.dataStakeholder.fields.frekuensi_kerjasama') }}
+                            @include('components.table.sort', ['field' => 'frekuensi_kerjasama'])
+                        </th>
+                        <th>
+                            {{ trans('cruds.dataStakeholder.fields.mulai_kerjasama') }}
+                            @include('components.table.sort', ['field' => 'mulai_kerjasama'])
+                        </th>
+                        <th>
+                            {{ trans('cruds.dataStakeholder.fields.nama_lembaga_kerjasama') }}
+                            @include('components.table.sort', ['field' => 'nama_lembaga_kerjasama'])
+                        </th>
+                        <th>
                             {{ trans('cruds.dataStakeholder.fields.nama_stakeholder') }}
                             @include('components.table.sort', ['field' => 'nama_stakeholder'])
                         </th>
                         <th>
-                            {{ trans('cruds.dataStakeholder.fields.daerah') }}
-                            @include('components.table.sort', ['field' => 'daerah.nama_daerah'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.dataDaerah.fields.nama_daerah') }}
-                            @include('components.table.sort', ['field' => 'daerah.nama_daerah'])
+                            {{ trans('cruds.dataStakeholder.fields.no_hp_wa_stakeholder') }}
+                            @include('components.table.sort', ['field' => 'no_hp_wa_stakeholder'])
                         </th>
                         <th>
                             {{ trans('cruds.dataStakeholder.fields.kontak_di_lembaga') }}
-                            @include('components.table.sort', ['field' => 'kontak_di_lembaga.name'])
+                            @include('components.table.sort', ['field' => 'kontak_di_lembaga'])
                         </th>
                         <th>
-                            {{ trans('cruds.user.fields.name') }}
-                            @include('components.table.sort', ['field' => 'kontak_di_lembaga.name'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.dataStakeholder.fields.kontak_di_stakeholder') }}
-                            @include('components.table.sort', ['field' => 'kontak_di_stakeholder.name'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.user.fields.name') }}
-                            @include('components.table.sort', ['field' => 'kontak_di_stakeholder.name'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.dataStakeholder.fields.jenis_kerjasama') }}
-                            @include('components.table.sort', ['field' => 'jenis_kerjasama.nama_jenis'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.jenisKerjasama.fields.nama_jenis') }}
-                            @include('components.table.sort', ['field' => 'jenis_kerjasama.nama_jenis'])
+                            {{ trans('cruds.dataStakeholder.fields.no_hp_wa_lembaga') }}
+                            @include('components.table.sort', ['field' => 'no_hp_wa_lembaga'])
                         </th>
                         <th>
                             {{ trans('cruds.dataStakeholder.fields.jangkauan_kerjasama') }}
                             @include('components.table.sort', ['field' => 'jangkauan_kerjasama'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.dataStakeholder.fields.lama_kerjasama') }}
-                            @include('components.table.sort', ['field' => 'lama_kerjasama'])
                         </th>
                         <th>
                             {{ trans('cruds.dataStakeholder.fields.lampiran') }}
@@ -107,53 +99,31 @@
                                 {{ $dataStakeholder->id }}
                             </td>
                             <td>
+                                {{ $dataStakeholder->jenis_kerjasama }}
+                            </td>
+                            <td>
+                                {{ $dataStakeholder->frekuensi_kerjasama }}
+                            </td>
+                            <td>
+                                {{ $dataStakeholder->mulai_kerjasama }}
+                            </td>
+                            <td>
+                                {{ $dataStakeholder->nama_lembaga_kerjasama }}
+                            </td>
+                            <td>
                                 {{ $dataStakeholder->nama_stakeholder }}
                             </td>
                             <td>
-                                @if($dataStakeholder->daerah)
-                                    <span class="badge badge-relationship">{{ $dataStakeholder->daerah->nama_daerah ?? '' }}</span>
-                                @endif
+                                {{ $dataStakeholder->no_hp_wa_stakeholder }}
                             </td>
                             <td>
-                                @if($dataStakeholder->daerah)
-                                    {{ $dataStakeholder->daerah->nama_daerah ?? '' }}
-                                @endif
+                                {{ $dataStakeholder->kontak_di_lembaga }}
                             </td>
                             <td>
-                                @if($dataStakeholder->kontakDiLembaga)
-                                    <span class="badge badge-relationship">{{ $dataStakeholder->kontakDiLembaga->name ?? '' }}</span>
-                                @endif
-                            </td>
-                            <td>
-                                @if($dataStakeholder->kontakDiLembaga)
-                                    {{ $dataStakeholder->kontakDiLembaga->name ?? '' }}
-                                @endif
-                            </td>
-                            <td>
-                                @if($dataStakeholder->kontakDiStakeholder)
-                                    <span class="badge badge-relationship">{{ $dataStakeholder->kontakDiStakeholder->name ?? '' }}</span>
-                                @endif
-                            </td>
-                            <td>
-                                @if($dataStakeholder->kontakDiStakeholder)
-                                    {{ $dataStakeholder->kontakDiStakeholder->name ?? '' }}
-                                @endif
-                            </td>
-                            <td>
-                                @if($dataStakeholder->jenisKerjasama)
-                                    <span class="badge badge-relationship">{{ $dataStakeholder->jenisKerjasama->nama_jenis ?? '' }}</span>
-                                @endif
-                            </td>
-                            <td>
-                                @if($dataStakeholder->jenisKerjasama)
-                                    {{ $dataStakeholder->jenisKerjasama->nama_jenis ?? '' }}
-                                @endif
+                                {{ $dataStakeholder->no_hp_wa_lembaga }}
                             </td>
                             <td>
                                 {{ $dataStakeholder->jangkauan_kerjasama }}
-                            </td>
-                            <td>
-                                {{ $dataStakeholder->lama_kerjasama_label }}
                             </td>
                             <td>
                                 @foreach($dataStakeholder->lampiran as $key => $entry)

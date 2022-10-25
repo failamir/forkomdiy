@@ -35,14 +35,6 @@
                         </tr>
                         <tr>
                             <th>
-                                {{ trans('cruds.dataUmum.fields.nick_name') }}
-                            </th>
-                            <td>
-                                {{ $dataUmum->nick_name }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
                                 {{ trans('cruds.dataUmum.fields.ketua') }}
                             </th>
                             <td>
@@ -129,6 +121,16 @@
                                         {{ $entry['file_name'] }}
                                     </a>
                                 @endforeach
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                {{ trans('cruds.dataUmum.fields.province') }}
+                            </th>
+                            <td>
+                                @if($dataUmum->province)
+                                    <span class="badge badge-relationship">{{ $dataUmum->province->province_name ?? '' }}</span>
+                                @endif
                             </td>
                         </tr>
                     </tbody>

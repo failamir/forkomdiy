@@ -5,6 +5,7 @@ namespace App\Http\Livewire\DataUmum;
 use App\Models\DataStakeholder;
 use App\Models\DataUmum;
 use App\Models\Perizinan;
+use App\Models\Province;
 use Livewire\Component;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
@@ -70,10 +71,6 @@ class Create extends Component
                 'string',
                 'nullable',
             ],
-            'dataUmum.nick_name' => [
-                'string',
-                'nullable',
-            ],
             'dataUmum.ketua_id' => [
                 'integer',
                 'exists:data_stakeholders,id',
@@ -122,6 +119,11 @@ class Create extends Component
                 'integer',
                 'exists:media,id',
             ],
+            'dataUmum.province_id' => [
+                'integer',
+                'exists:provinces,id',
+                'nullable',
+            ],
         ];
     }
 
@@ -129,5 +131,6 @@ class Create extends Component
     {
         $this->listsForFields['ketua']     = DataStakeholder::pluck('nama_stakeholder', 'id')->toArray();
         $this->listsForFields['perizinan'] = Perizinan::pluck('nama_izin', 'id')->toArray();
+        $this->listsForFields['province']  = Province::pluck('province_name', 'id')->toArray();
     }
 }

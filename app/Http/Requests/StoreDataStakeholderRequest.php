@@ -25,37 +25,41 @@ class StoreDataStakeholderRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'jenis_kerjasama' => [
+                'string',
+                'nullable',
+            ],
+            'frekuensi_kerjasama' => [
+                'string',
+                'nullable',
+            ],
+            'mulai_kerjasama' => [
+                'nullable',
+                'date_format:' . config('project.date_format'),
+            ],
+            'nama_lembaga_kerjasama' => [
+                'string',
+                'nullable',
+            ],
             'nama_stakeholder' => [
                 'string',
                 'nullable',
             ],
-            'daerah_id' => [
-                'integer',
-                'exists:data_daerahs,id',
+            'no_hp_wa_stakeholder' => [
+                'string',
                 'nullable',
             ],
-            'kontak_di_lembaga_id' => [
-                'integer',
-                'exists:users,id',
+            'kontak_di_lembaga' => [
+                'string',
                 'nullable',
             ],
-            'kontak_di_stakeholder_id' => [
-                'integer',
-                'exists:users,id',
-                'nullable',
-            ],
-            'jenis_kerjasama_id' => [
-                'integer',
-                'exists:jenis_kerjasamas,id',
+            'no_hp_wa_lembaga' => [
+                'string',
                 'nullable',
             ],
             'jangkauan_kerjasama' => [
                 'string',
                 'nullable',
-            ],
-            'lama_kerjasama' => [
-                'nullable',
-                'in:' . implode(',', array_keys(DataStakeholder::LAMA_KERJASAMA_SELECT)),
             ],
         ];
     }

@@ -43,7 +43,7 @@ class DataStakeholderController extends Controller
     {
         abort_if(Gate::denies('data_stakeholder_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $dataStakeholder->load('daerah', 'kontakDiLembaga', 'kontakDiStakeholder', 'jenisKerjasama');
+        $dataStakeholder->load('owner');
 
         return view('admin.data-stakeholder.show', compact('dataStakeholder'));
     }

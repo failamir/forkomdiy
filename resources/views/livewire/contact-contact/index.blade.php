@@ -45,10 +45,6 @@
                             @include('components.table.sort', ['field' => 'id'])
                         </th>
                         <th>
-                            {{ trans('cruds.contactContact.fields.company') }}
-                            @include('components.table.sort', ['field' => 'company.company_name'])
-                        </th>
-                        <th>
                             {{ trans('cruds.contactContact.fields.contact_first_name') }}
                             @include('components.table.sort', ['field' => 'contact_first_name'])
                         </th>
@@ -69,10 +65,6 @@
                             @include('components.table.sort', ['field' => 'contact_email'])
                         </th>
                         <th>
-                            {{ trans('cruds.contactContact.fields.contact_skype') }}
-                            @include('components.table.sort', ['field' => 'contact_skype'])
-                        </th>
-                        <th>
                             {{ trans('cruds.contactContact.fields.contact_address') }}
                             @include('components.table.sort', ['field' => 'contact_address'])
                         </th>
@@ -90,11 +82,6 @@
                                 {{ $contactContact->id }}
                             </td>
                             <td>
-                                @if($contactContact->company)
-                                    <span class="badge badge-relationship">{{ $contactContact->company->company_name ?? '' }}</span>
-                                @endif
-                            </td>
-                            <td>
                                 {{ $contactContact->contact_first_name }}
                             </td>
                             <td>
@@ -108,9 +95,6 @@
                             </td>
                             <td>
                                 {{ $contactContact->contact_email }}
-                            </td>
-                            <td>
-                                {{ $contactContact->contact_skype }}
                             </td>
                             <td>
                                 {{ $contactContact->contact_address }}

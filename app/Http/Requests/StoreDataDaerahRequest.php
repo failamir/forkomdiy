@@ -25,8 +25,23 @@ class StoreDataDaerahRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nama_daerah' => [
+            'regency_id' => [
+                'integer',
+                'exists:regencies,id',
+                'nullable',
+            ],
+            'nama_ketua' => [
                 'string',
+                'nullable',
+            ],
+            'kontak_hp_wa' => [
+                'string',
+                'nullable',
+            ],
+            'jumlah_anggota' => [
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
                 'nullable',
             ],
         ];

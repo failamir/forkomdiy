@@ -29,11 +29,6 @@ class UpdatePerizinanRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'jenis_izin_id' => [
-                'integer',
-                'exists:jenis_izins,id',
-                'nullable',
-            ],
             'instansi_penerbit' => [
                 'string',
                 'nullable',
@@ -42,9 +37,13 @@ class UpdatePerizinanRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'masa_berlaku' => [
+            'tanggal_dikeluarkan' => [
                 'nullable',
                 'date_format:' . config('project.date_format'),
+            ],
+            'berlaku_sampai' => [
+                'string',
+                'nullable',
             ],
         ];
     }

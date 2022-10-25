@@ -43,8 +43,27 @@ class DataCabangController extends Controller
     {
         abort_if(Gate::denies('data_cabang_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $dataCabang->load('daerah');
+        $dataCabang->load('district', 'owner');
 
         return view('admin.data-cabang.show', compact('dataCabang'));
+    }
+
+    public function storeMedia(Request $request)
+    {
+        abort_if(Gate::none(['data_cabang_create', 'data_cabang_edit']), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        if ($request->has('size')) {
+            $this->validate($request, [
+                'file' => 'max:' . $request->input('size') * 1024,
+            ]);
+        }
+
+        $model                     = new DataCabang();
+        $model->id                 = $request->input('model_id', 0);
+        $model->exists             = true;
+        $media                     = $model->addMediaFromRequest('file')->toMediaCollection($request->input('collection_name'));
+        $media->wasRecentlyCreated = true;
+
+        return response()->json(compact('media'), Response::HTTP_CREATED);
     }
 }

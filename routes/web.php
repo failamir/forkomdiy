@@ -5,21 +5,23 @@ use App\Http\Controllers\Admin\ContactCompanyController;
 use App\Http\Controllers\Admin\ContactContactController;
 use App\Http\Controllers\Admin\DataCabangController;
 use App\Http\Controllers\Admin\DataDaerahController;
-use App\Http\Controllers\Admin\DataKhusuController;
+use App\Http\Controllers\Admin\DataRantingController;
 use App\Http\Controllers\Admin\DataStakeholderController;
 use App\Http\Controllers\Admin\DataUmumController;
-use App\Http\Controllers\Admin\DataWilayahController;
+use App\Http\Controllers\Admin\DistrictController;
 use App\Http\Controllers\Admin\HomeController;
-use App\Http\Controllers\Admin\JenisIzinController;
 use App\Http\Controllers\Admin\JenisKerjasamaController;
 use App\Http\Controllers\Admin\KetuaController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\PerizinanController;
 use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\ProvinceController;
+use App\Http\Controllers\Admin\RegencyController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SystemCalendarController;
 use App\Http\Controllers\Admin\UserAlertController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\VillageController;
 use App\Http\Controllers\Auth\ApprovalController;
 use App\Http\Controllers\Auth\UserProfileController;
 use Illuminate\Support\Facades\Auth;
@@ -45,6 +47,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
 
     // Perizinan
     Route::post('perizinans/media', [PerizinanController::class, 'storeMedia'])->name('perizinans.storeMedia');
+    Route::post('perizinans/csv', [PerizinanController::class, 'csvStore'])->name('perizinans.csv.store');
+    Route::put('perizinans/csv', [PerizinanController::class, 'csvUpdate'])->name('perizinans.csv.update');
     Route::resource('perizinans', PerizinanController::class, ['except' => ['store', 'update', 'destroy']]);
 
     // Data Stakeholders
@@ -75,36 +79,47 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
     Route::put('data-umums/csv', [DataUmumController::class, 'csvUpdate'])->name('data-umums.csv.update');
     Route::resource('data-umums', DataUmumController::class, ['except' => ['store', 'update', 'destroy']]);
 
-    // Data Khusus
-    Route::post('data-khusus/csv', [DataKhusuController::class, 'csvStore'])->name('data-khusus.csv.store');
-    Route::put('data-khusus/csv', [DataKhusuController::class, 'csvUpdate'])->name('data-khusus.csv.update');
-    Route::resource('data-khusus', DataKhusuController::class, ['except' => ['store', 'update', 'destroy']]);
-
-    // Data Daerah
-    Route::post('data-daerahs/csv', [DataDaerahController::class, 'csvStore'])->name('data-daerahs.csv.store');
-    Route::put('data-daerahs/csv', [DataDaerahController::class, 'csvUpdate'])->name('data-daerahs.csv.update');
-    Route::resource('data-daerahs', DataDaerahController::class, ['except' => ['store', 'update', 'destroy']]);
-
-    // Data Wilayah
-    Route::post('data-wilayahs/csv', [DataWilayahController::class, 'csvStore'])->name('data-wilayahs.csv.store');
-    Route::put('data-wilayahs/csv', [DataWilayahController::class, 'csvUpdate'])->name('data-wilayahs.csv.update');
-    Route::resource('data-wilayahs', DataWilayahController::class, ['except' => ['store', 'update', 'destroy']]);
-
-    // Data Cabang
-    Route::post('data-cabangs/csv', [DataCabangController::class, 'csvStore'])->name('data-cabangs.csv.store');
-    Route::put('data-cabangs/csv', [DataCabangController::class, 'csvUpdate'])->name('data-cabangs.csv.update');
-    Route::resource('data-cabangs', DataCabangController::class, ['except' => ['store', 'update', 'destroy']]);
-
     // Jenis Kerjasama
     Route::post('jenis-kerjasamas/csv', [JenisKerjasamaController::class, 'csvStore'])->name('jenis-kerjasamas.csv.store');
     Route::put('jenis-kerjasamas/csv', [JenisKerjasamaController::class, 'csvUpdate'])->name('jenis-kerjasamas.csv.update');
     Route::resource('jenis-kerjasamas', JenisKerjasamaController::class, ['except' => ['store', 'update', 'destroy']]);
 
-    // Jenis Izin
-    Route::resource('jenis-izins', JenisIzinController::class, ['except' => ['store', 'update', 'destroy']]);
-
     // Ketua
     Route::resource('ketuas', KetuaController::class, ['except' => ['store', 'update', 'destroy']]);
+
+    // Province
+    Route::post('provinces/csv', [ProvinceController::class, 'csvStore'])->name('provinces.csv.store');
+    Route::put('provinces/csv', [ProvinceController::class, 'csvUpdate'])->name('provinces.csv.update');
+    Route::resource('provinces', ProvinceController::class, ['except' => ['store', 'update', 'destroy']]);
+
+    // Regencies
+    Route::resource('regencies', RegencyController::class, ['except' => ['store', 'update', 'destroy']]);
+
+    // Districts
+    Route::post('districts/csv', [DistrictController::class, 'csvStore'])->name('districts.csv.store');
+    Route::put('districts/csv', [DistrictController::class, 'csvUpdate'])->name('districts.csv.update');
+    Route::resource('districts', DistrictController::class, ['except' => ['store', 'update', 'destroy']]);
+
+    // Villages
+    Route::post('villages/csv', [VillageController::class, 'csvStore'])->name('villages.csv.store');
+    Route::put('villages/csv', [VillageController::class, 'csvUpdate'])->name('villages.csv.update');
+    Route::resource('villages', VillageController::class, ['except' => ['store', 'update', 'destroy']]);
+
+    // Data Daerah
+    Route::post('data-daerahs/media', [DataDaerahController::class, 'storeMedia'])->name('data-daerahs.storeMedia');
+    Route::post('data-daerahs/csv', [DataDaerahController::class, 'csvStore'])->name('data-daerahs.csv.store');
+    Route::put('data-daerahs/csv', [DataDaerahController::class, 'csvUpdate'])->name('data-daerahs.csv.update');
+    Route::resource('data-daerahs', DataDaerahController::class, ['except' => ['store', 'update', 'destroy']]);
+
+    // Data Cabang
+    Route::post('data-cabangs/media', [DataCabangController::class, 'storeMedia'])->name('data-cabangs.storeMedia');
+    Route::post('data-cabangs/csv', [DataCabangController::class, 'csvStore'])->name('data-cabangs.csv.store');
+    Route::put('data-cabangs/csv', [DataCabangController::class, 'csvUpdate'])->name('data-cabangs.csv.update');
+    Route::resource('data-cabangs', DataCabangController::class, ['except' => ['store', 'update', 'destroy']]);
+
+    // Data Ranting
+    Route::post('data-rantings/media', [DataRantingController::class, 'storeMedia'])->name('data-rantings.storeMedia');
+    Route::resource('data-rantings', DataRantingController::class, ['except' => ['store', 'update', 'destroy']]);
 
     // Messages
     Route::get('messages', [MessageController::class, 'index'])->name('messages.index');

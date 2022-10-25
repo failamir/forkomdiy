@@ -20,7 +20,7 @@ class DataStakeholderApiController extends Controller
     {
         abort_if(Gate::denies('data_stakeholder_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new DataStakeholderResource(DataStakeholder::with(['daerah', 'kontakDiLembaga', 'kontakDiStakeholder', 'jenisKerjasama'])->get());
+        return new DataStakeholderResource(DataStakeholder::with(['owner'])->get());
     }
 
     public function store(StoreDataStakeholderRequest $request)
@@ -40,7 +40,7 @@ class DataStakeholderApiController extends Controller
     {
         abort_if(Gate::denies('data_stakeholder_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new DataStakeholderResource($dataStakeholder->load(['daerah', 'kontakDiLembaga', 'kontakDiStakeholder', 'jenisKerjasama']));
+        return new DataStakeholderResource($dataStakeholder->load(['owner']));
     }
 
     public function update(UpdateDataStakeholderRequest $request, DataStakeholder $dataStakeholder)

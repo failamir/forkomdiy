@@ -10,16 +10,6 @@
             {{ trans('cruds.perizinan.fields.nama_izin_helper') }}
         </div>
     </div>
-    <div class="form-group {{ $errors->has('perizinan.jenis_izin_id') ? 'invalid' : '' }}">
-        <label class="form-label" for="jenis_izin">{{ trans('cruds.perizinan.fields.jenis_izin') }}</label>
-        <x-select-list class="form-control" id="jenis_izin" name="jenis_izin" :options="$this->listsForFields['jenis_izin']" wire:model="perizinan.jenis_izin_id" />
-        <div class="validation-message">
-            {{ $errors->first('perizinan.jenis_izin_id') }}
-        </div>
-        <div class="help-block">
-            {{ trans('cruds.perizinan.fields.jenis_izin_helper') }}
-        </div>
-    </div>
     <div class="form-group {{ $errors->has('perizinan.instansi_penerbit') ? 'invalid' : '' }}">
         <label class="form-label" for="instansi_penerbit">{{ trans('cruds.perizinan.fields.instansi_penerbit') }}</label>
         <input class="form-control" type="text" name="instansi_penerbit" id="instansi_penerbit" wire:model.defer="perizinan.instansi_penerbit">
@@ -40,14 +30,24 @@
             {{ trans('cruds.perizinan.fields.nomor_izin_helper') }}
         </div>
     </div>
-    <div class="form-group {{ $errors->has('perizinan.masa_berlaku') ? 'invalid' : '' }}">
-        <label class="form-label" for="masa_berlaku">{{ trans('cruds.perizinan.fields.masa_berlaku') }}</label>
-        <x-date-picker class="form-control" wire:model="perizinan.masa_berlaku" id="masa_berlaku" name="masa_berlaku" picker="date" />
+    <div class="form-group {{ $errors->has('perizinan.tanggal_dikeluarkan') ? 'invalid' : '' }}">
+        <label class="form-label" for="tanggal_dikeluarkan">{{ trans('cruds.perizinan.fields.tanggal_dikeluarkan') }}</label>
+        <x-date-picker class="form-control" wire:model="perizinan.tanggal_dikeluarkan" id="tanggal_dikeluarkan" name="tanggal_dikeluarkan" picker="date" />
         <div class="validation-message">
-            {{ $errors->first('perizinan.masa_berlaku') }}
+            {{ $errors->first('perizinan.tanggal_dikeluarkan') }}
         </div>
         <div class="help-block">
-            {{ trans('cruds.perizinan.fields.masa_berlaku_helper') }}
+            {{ trans('cruds.perizinan.fields.tanggal_dikeluarkan_helper') }}
+        </div>
+    </div>
+    <div class="form-group {{ $errors->has('perizinan.berlaku_sampai') ? 'invalid' : '' }}">
+        <label class="form-label" for="berlaku_sampai">{{ trans('cruds.perizinan.fields.berlaku_sampai') }}</label>
+        <input class="form-control" type="text" name="berlaku_sampai" id="berlaku_sampai" wire:model.defer="perizinan.berlaku_sampai">
+        <div class="validation-message">
+            {{ $errors->first('perizinan.berlaku_sampai') }}
+        </div>
+        <div class="help-block">
+            {{ trans('cruds.perizinan.fields.berlaku_sampai_helper') }}
         </div>
     </div>
     <div class="form-group {{ $errors->has('mediaCollections.perizinan_lampiran_file') ? 'invalid' : '' }}">
