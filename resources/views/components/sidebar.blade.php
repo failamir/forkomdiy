@@ -45,12 +45,30 @@
                     </a>
                 </li>
 
+                @can('perizinan_access')
+                    <li class="items-center">
+                        <a class="{{ request()->is("admin/perizinans*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.perizinans.index") }}">
+                            <i class="fa-fw c-sidebar-nav-icon fas fa-book">
+                            </i>
+                            {{ trans('cruds.perizinan.title') }}
+                        </a>
+                    </li>
+                @endcan
                 @can('data_umum_access')
                     <li class="items-center">
                         <a class="{{ request()->is("admin/data-umums*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.data-umums.index") }}">
                             <i class="fa-fw c-sidebar-nav-icon fas fa-atlas">
                             </i>
                             {{ trans('cruds.dataUmum.title') }}
+                        </a>
+                    </li>
+                @endcan
+                @can('data_stakeholder_access')
+                    <li class="items-center">
+                        <a class="{{ request()->is("admin/data-stakeholders*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.data-stakeholders.index") }}">
+                            <i class="fa-fw c-sidebar-nav-icon fas fa-users">
+                            </i>
+                            {{ trans('cruds.dataStakeholder.title') }}
                         </a>
                     </li>
                 @endcan
@@ -90,24 +108,6 @@
                                 </li>
                             @endcan
                         </ul>
-                    </li>
-                @endcan
-                @can('data_stakeholder_access')
-                    <li class="items-center">
-                        <a class="{{ request()->is("admin/data-stakeholders*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.data-stakeholders.index") }}">
-                            <i class="fa-fw c-sidebar-nav-icon fas fa-users">
-                            </i>
-                            {{ trans('cruds.dataStakeholder.title') }}
-                        </a>
-                    </li>
-                @endcan
-                @can('perizinan_access')
-                    <li class="items-center">
-                        <a class="{{ request()->is("admin/perizinans*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.perizinans.index") }}">
-                            <i class="fa-fw c-sidebar-nav-icon fas fa-book">
-                            </i>
-                            {{ trans('cruds.perizinan.title') }}
-                        </a>
                     </li>
                 @endcan
                 @can('master_data_access')

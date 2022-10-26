@@ -5,7 +5,6 @@ namespace App\Models;
 use \DateTimeInterface;
 use App\Support\HasAdvancedFilter;
 use App\Traits\Auditable;
-use App\Traits\Tenantable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -15,7 +14,6 @@ class Regency extends Model
     use HasFactory;
     use HasAdvancedFilter;
     use SoftDeletes;
-    use Tenantable;
     use Auditable;
 
     public $table = 'regencies';
@@ -45,11 +43,6 @@ class Regency extends Model
         'id_regency',
         'regency_name',
     ];
-
-    public function owner()
-    {
-        return $this->belongsTo(User::class);
-    }
 
     protected function serializeDate(DateTimeInterface $date)
     {

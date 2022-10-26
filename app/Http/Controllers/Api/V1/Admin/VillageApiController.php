@@ -17,7 +17,7 @@ class VillageApiController extends Controller
     {
         abort_if(Gate::denies('village_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new VillageResource(Village::with(['owner'])->get());
+        return new VillageResource(Village::all());
     }
 
     public function store(StoreVillageRequest $request)
@@ -33,7 +33,7 @@ class VillageApiController extends Controller
     {
         abort_if(Gate::denies('village_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new VillageResource($village->load(['owner']));
+        return new VillageResource($village);
     }
 
     public function update(UpdateVillageRequest $request, Village $village)

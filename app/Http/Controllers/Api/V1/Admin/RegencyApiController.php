@@ -17,7 +17,7 @@ class RegencyApiController extends Controller
     {
         abort_if(Gate::denies('regency_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new RegencyResource(Regency::with(['owner'])->get());
+        return new RegencyResource(Regency::all());
     }
 
     public function store(StoreRegencyRequest $request)
@@ -33,7 +33,7 @@ class RegencyApiController extends Controller
     {
         abort_if(Gate::denies('regency_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new RegencyResource($regency->load(['owner']));
+        return new RegencyResource($regency);
     }
 
     public function update(UpdateRegencyRequest $request, Regency $regency)

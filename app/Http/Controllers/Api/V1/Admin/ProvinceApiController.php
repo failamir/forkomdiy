@@ -17,7 +17,7 @@ class ProvinceApiController extends Controller
     {
         abort_if(Gate::denies('province_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new ProvinceResource(Province::with(['owner'])->get());
+        return new ProvinceResource(Province::all());
     }
 
     public function store(StoreProvinceRequest $request)
@@ -33,7 +33,7 @@ class ProvinceApiController extends Controller
     {
         abort_if(Gate::denies('province_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new ProvinceResource($province->load(['owner']));
+        return new ProvinceResource($province);
     }
 
     public function update(UpdateProvinceRequest $request, Province $province)
