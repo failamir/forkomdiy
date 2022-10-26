@@ -12,6 +12,8 @@ class CreateDataUmumsTable extends Migration
             $table->bigIncrements('id');
             $table->string('nama_lembaga')->nullable();
             $table->string('sekretariat_wilayah')->nullable();
+            $table->string('ketua_name')->nullable();
+            $table->string('periode')->nullable();
             $table->string('website')->nullable();
             $table->string('email')->nullable();
             $table->string('telp')->nullable();
