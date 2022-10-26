@@ -70,6 +70,8 @@ class DataUmum extends Model implements HasMedia
     protected $fillable = [
         'nama_lembaga',
         'ketua_id',
+        'ketua_name',
+        'periode',
         'sekretariat_wilayah',
         'website',
         'email',

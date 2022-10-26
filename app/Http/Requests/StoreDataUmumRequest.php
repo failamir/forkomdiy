@@ -34,6 +34,14 @@ class StoreDataUmumRequest extends FormRequest
                 'exists:ketuas,id',
                 'nullable',
             ],
+            'ketua_name' => [
+                'string',
+                'nullable',
+            ],
+            'periode' => [
+                'string',
+                'nullable',
+            ],
             'sekretariat_wilayah' => [
                 'string',
                 'nullable',
