@@ -51,7 +51,7 @@ class Create extends Component
         $this->validate();
         $values = array('id' => 0,'contact_first_name' => $this->dataUmum->ketua_name);
         $contact= ContactContact::create($values);
-        $values = array('id' => 0,'ketua_id' => $contact->id,'periode' => $this->dataUmum->periode);
+        $values = array('id' => 0,'ketua_id' => $contact->id,'periode' => $this->dataUmum->periode,'name' => $this->dataUmum->ketua_name);
         Ketua::create($values);
         $this->dataUmum->save();
         $this->syncMedia();
