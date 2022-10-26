@@ -31,7 +31,7 @@ class UpdateDataUmumRequest extends FormRequest
             ],
             'ketua_id' => [
                 'integer',
-                'exists:data_stakeholders,id',
+                'exists:ketuas,id',
                 'nullable',
             ],
             'sekretariat_wilayah' => [

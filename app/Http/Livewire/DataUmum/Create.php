@@ -2,11 +2,13 @@
 
 namespace App\Http\Livewire\DataUmum;
 
-use App\Models\DataStakeholder;
+use App\Models\Ketua;
 use App\Models\DataUmum;
 use App\Models\Perizinan;
 use App\Models\Province;
+use App\Models\ContactContact;
 use Livewire\Component;
+use Illuminate\Support\Facades\DB;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Create extends Component
@@ -48,7 +50,11 @@ class Create extends Component
     public function submit()
     {
         $this->validate();
-
+        // var_dump($this->dataUmum);die;
+        $values = array('id' => 0,'contact_first_name' => $this->dataUmum->ketua_name);
+        $contact= ContactContact::create($values);
+        $values = array('id' => 0,'ketua_id' => $contact->id,'periode' => $this->dataUmum->periode);
+        DB::table('ketuas')->insert($values);
         $this->dataUmum->save();
         $this->syncMedia();
 
@@ -73,10 +79,18 @@ class Create extends Component
             ],
             'dataUmum.ketua_id' => [
                 'integer',
-                'exists:data_stakeholders,id',
+                'exists:ketuas,id',
                 'nullable',
             ],
             'dataUmum.sekretariat_wilayah' => [
+                'string',
+                'nullable',
+            ],
+            'dataUmum.ketua_name' => [
+                'string',
+                'nullable',
+            ],
+            'dataUmum.periode' => [
                 'string',
                 'nullable',
             ],
@@ -129,7 +143,7 @@ class Create extends Component
 
     protected function initListsForFields(): void
     {
-        $this->listsForFields['ketua']     = DataStakeholder::pluck('nama_stakeholder', 'id')->toArray();
+        $this->listsForFields['ketua']     = ContactContact::pluck('contact_first_name', 'id')->toArray();
         $this->listsForFields['perizinan'] = Perizinan::pluck('nama_izin', 'id')->toArray();
         $this->listsForFields['province']  = Province::pluck('province_name', 'id')->toArray();
     }

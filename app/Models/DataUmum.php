@@ -68,6 +68,8 @@ class DataUmum extends Model implements HasMedia
     protected $fillable = [
         'nama_lembaga',
         'ketua_id',
+        'ketua_name',
+        'periode',
         'sekretariat_wilayah',
         'website',
         'email',
@@ -81,7 +83,7 @@ class DataUmum extends Model implements HasMedia
 
     public function ketua()
     {
-        return $this->belongsTo(DataStakeholder::class);
+        return $this->belongsTo(Ketua::class);
     }
 
     public function perizinan()

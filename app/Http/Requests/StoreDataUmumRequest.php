@@ -31,10 +31,18 @@ class StoreDataUmumRequest extends FormRequest
             ],
             'ketua_id' => [
                 'integer',
-                'exists:data_stakeholders,id',
+                'exists:ketuas,id',
                 'nullable',
             ],
             'sekretariat_wilayah' => [
+                'string',
+                'nullable',
+            ],
+            'dataUmum.ketua_name' => [
+                'string',
+                'nullable',
+            ],
+            'dataUmum.periode' => [
                 'string',
                 'nullable',
             ],

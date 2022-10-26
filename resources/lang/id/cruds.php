@@ -238,6 +238,8 @@ return [
             'nama_lembaga'               => 'Nama Lembaga',
             'nama_lembaga_helper'        => 'Nama singkatan dan nama panjang',
             'ketua'                      => 'Ketua',
+            'ketua_name'                 => 'Nama Ketua',
+            'periode'                    => 'Periode',
             'ketua_helper'               => ' ',
             'website'                    => 'Website',
             'website_helper'             => ' ',
