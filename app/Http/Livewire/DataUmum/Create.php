@@ -80,6 +80,14 @@ class Create extends Component
                 'exists:ketuas,id',
                 'nullable',
             ],
+            'dataUmum.ketua_name' => [
+                'string',
+                'nullable',
+            ],
+            'dataUmum.periode' => [
+                'string',
+                'nullable',
+            ],
             'dataUmum.sekretariat_wilayah' => [
                 'string',
                 'nullable',
