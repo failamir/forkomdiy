@@ -26,7 +26,8 @@ class DataUmum extends Model implements HasMedia
     public $orderable = [
         'id',
         'nama_lembaga',
-        'ketua.nama_stakeholder',
+        'ketua.name',
+        'ketua.periode',
         'sekretariat_wilayah',
         'website',
         'email',
@@ -42,7 +43,8 @@ class DataUmum extends Model implements HasMedia
     public $filterable = [
         'id',
         'nama_lembaga',
-        'ketua.nama_stakeholder',
+        'ketua.name',
+        'ketua.periode',
         'sekretariat_wilayah',
         'website',
         'email',
@@ -81,7 +83,7 @@ class DataUmum extends Model implements HasMedia
 
     public function ketua()
     {
-        return $this->belongsTo(DataStakeholder::class);
+        return $this->belongsTo(Ketua::class);
     }
 
     public function perizinan()

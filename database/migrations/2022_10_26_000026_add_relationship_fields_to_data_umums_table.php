@@ -10,7 +10,7 @@ class AddRelationshipFieldsToDataUmumsTable extends Migration
     {
         Schema::table('data_umums', function (Blueprint $table) {
             $table->unsignedBigInteger('ketua_id')->nullable();
-            $table->foreign('ketua_id', 'ketua_fk_7454167')->references('id')->on('data_stakeholders');
+            $table->foreign('ketua_id', 'ketua_fk_7454167')->references('id')->on('ketuas');
             $table->unsignedBigInteger('perizinan_id')->nullable();
             $table->foreign('perizinan_id', 'perizinan_fk_7454174')->references('id')->on('perizinans');
             $table->unsignedBigInteger('province_id')->nullable();

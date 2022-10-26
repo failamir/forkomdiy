@@ -52,11 +52,11 @@
                         </th>
                         <th>
                             {{ trans('cruds.dataUmum.fields.ketua') }}
-                            @include('components.table.sort', ['field' => 'ketua.nama_stakeholder'])
+                            @include('components.table.sort', ['field' => 'ketua.name'])
                         </th>
                         <th>
-                            {{ trans('cruds.dataStakeholder.fields.nama_stakeholder') }}
-                            @include('components.table.sort', ['field' => 'ketua.nama_stakeholder'])
+                            {{ trans('cruds.ketua.fields.periode') }}
+                            @include('components.table.sort', ['field' => 'ketua.periode'])
                         </th>
                         <th>
                             {{ trans('cruds.dataUmum.fields.sekretariat_wilayah') }}
@@ -123,12 +123,12 @@
                             </td>
                             <td>
                                 @if($dataUmum->ketua)
-                                    <span class="badge badge-relationship">{{ $dataUmum->ketua->nama_stakeholder ?? '' }}</span>
+                                    <span class="badge badge-relationship">{{ $dataUmum->ketua->name ?? '' }}</span>
                                 @endif
                             </td>
                             <td>
                                 @if($dataUmum->ketua)
-                                    {{ $dataUmum->ketua->nama_stakeholder ?? '' }}
+                                    {{ $dataUmum->ketua->periode ?? '' }}
                                 @endif
                             </td>
                             <td>

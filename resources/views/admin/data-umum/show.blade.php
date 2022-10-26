@@ -39,7 +39,7 @@
                             </th>
                             <td>
                                 @if($dataUmum->ketua)
-                                    <span class="badge badge-relationship">{{ $dataUmum->ketua->nama_stakeholder ?? '' }}</span>
+                                    <span class="badge badge-relationship">{{ $dataUmum->ketua->name ?? '' }}</span>
                                 @endif
                             </td>
                         </tr>

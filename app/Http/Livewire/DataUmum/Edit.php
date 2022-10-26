@@ -2,8 +2,8 @@
 
 namespace App\Http\Livewire\DataUmum;
 
-use App\Models\DataStakeholder;
 use App\Models\DataUmum;
+use App\Models\Ketua;
 use App\Models\Perizinan;
 use App\Models\Province;
 use Livewire\Component;
@@ -80,7 +80,7 @@ class Edit extends Component
             ],
             'dataUmum.ketua_id' => [
                 'integer',
-                'exists:data_stakeholders,id',
+                'exists:ketuas,id',
                 'nullable',
             ],
             'dataUmum.sekretariat_wilayah' => [
@@ -136,7 +136,7 @@ class Edit extends Component
 
     protected function initListsForFields(): void
     {
-        $this->listsForFields['ketua']     = DataStakeholder::pluck('nama_stakeholder', 'id')->toArray();
+        $this->listsForFields['ketua']     = Ketua::pluck('name', 'id')->toArray();
         $this->listsForFields['perizinan'] = Perizinan::pluck('nama_izin', 'id')->toArray();
         $this->listsForFields['province']  = Province::pluck('province_name', 'id')->toArray();
     }
