@@ -10,6 +10,16 @@
             {{ trans('cruds.ketua.fields.ketua_helper') }}
         </div>
     </div>
+    <div class="form-group {{ $errors->has('ketua.name') ? 'invalid' : '' }}">
+        <label class="form-label" for="name">{{ trans('cruds.ketua.fields.name') }}</label>
+        <input class="form-control" type="text" name="name" id="name" wire:model.defer="ketua.name">
+        <div class="validation-message">
+            {{ $errors->first('ketua.name') }}
+        </div>
+        <div class="help-block">
+            {{ trans('cruds.ketua.fields.name_helper') }}
+        </div>
+    </div>
     <div class="form-group {{ $errors->has('ketua.periode') ? 'invalid' : '' }}">
         <label class="form-label" for="periode">{{ trans('cruds.ketua.fields.periode') }}</label>
         <input class="form-control" type="text" name="periode" id="periode" wire:model.defer="ketua.periode">

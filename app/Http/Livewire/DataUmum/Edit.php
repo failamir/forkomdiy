@@ -80,18 +80,10 @@ class Edit extends Component
             ],
             'dataUmum.ketua_id' => [
                 'integer',
-                'exists:ketuas,id',
+                'exists:data_stakeholders,id',
                 'nullable',
             ],
             'dataUmum.sekretariat_wilayah' => [
-                'string',
-                'nullable',
-            ],
-            'dataUmum.ketua_name' => [
-                'string',
-                'nullable',
-            ],
-            'dataUmum.periode' => [
                 'string',
                 'nullable',
             ],

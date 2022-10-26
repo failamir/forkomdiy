@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\WithCSVImport;
 use App\Models\Ketua;
 use Gate;
 use Illuminate\Http\Request;
@@ -10,6 +11,13 @@ use Illuminate\Http\Response;
 
 class KetuaController extends Controller
 {
+    use WithCSVImport;
+
+    public function __construct()
+    {
+        $this->csvImportModel = Ketua::class;
+    }
+
     public function index()
     {
         abort_if(Gate::denies('ketua_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
@@ -35,7 +43,7 @@ class KetuaController extends Controller
     {
         abort_if(Gate::denies('ketua_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $ketua->load('ketua');
+        $ketua->load('ketua', 'owner');
 
         return view('admin.ketua.show', compact('ketua'));
     }

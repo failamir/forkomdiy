@@ -10,6 +10,7 @@ class CreateKetuasTable extends Migration
     {
         Schema::create('ketuas', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name')->nullable();
             $table->string('periode')->nullable();
             $table->timestamps();
             $table->softDeletes();

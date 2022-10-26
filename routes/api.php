@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\V1\Admin\DataStakeholderApiController;
 use App\Http\Controllers\Api\V1\Admin\DataUmumApiController;
 use App\Http\Controllers\Api\V1\Admin\DistrictApiController;
 use App\Http\Controllers\Api\V1\Admin\JenisKerjasamaApiController;
+use App\Http\Controllers\Api\V1\Admin\KetuaApiController;
 use App\Http\Controllers\Api\V1\Admin\PerizinanApiController;
 use App\Http\Controllers\Api\V1\Admin\ProvinceApiController;
 use App\Http\Controllers\Api\V1\Admin\VillageApiController;
@@ -25,6 +26,9 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'middleware' => ['auth:sanctum']
 
     // Jenis Kerjasama
     Route::apiResource('jenis-kerjasamas', JenisKerjasamaApiController::class);
+
+    // Ketua
+    Route::apiResource('ketuas', KetuaApiController::class);
 
     // Province
     Route::apiResource('provinces', ProvinceApiController::class);

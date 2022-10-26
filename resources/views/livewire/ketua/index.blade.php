@@ -21,7 +21,9 @@
             @endif
 
 
-
+            @can('ketua_create')
+                <x-csv-import route="{{ route('admin.ketuas.csv.store') }}" />
+            @endcan
 
         </div>
         <div class="w-full sm:w-1/2 sm:text-right">
@@ -53,6 +55,10 @@
                             @include('components.table.sort', ['field' => 'ketua.contact_first_name'])
                         </th>
                         <th>
+                            {{ trans('cruds.ketua.fields.name') }}
+                            @include('components.table.sort', ['field' => 'name'])
+                        </th>
+                        <th>
                             {{ trans('cruds.ketua.fields.periode') }}
                             @include('components.table.sort', ['field' => 'periode'])
                         </th>
@@ -78,6 +84,9 @@
                                 @if($ketua->ketua)
                                     {{ $ketua->ketua->contact_first_name ?? '' }}
                                 @endif
+                            </td>
+                            <td>
+                                {{ $ketua->name }}
                             </td>
                             <td>
                                 {{ $ketua->periode }}
