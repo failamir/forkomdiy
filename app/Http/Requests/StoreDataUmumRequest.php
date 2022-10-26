@@ -34,11 +34,11 @@ class StoreDataUmumRequest extends FormRequest
                 'exists:ketuas,id',
                 'nullable',
             ],
-            'dataUmum.ketua_name' => [
+            'ketua_name' => [
                 'string',
                 'nullable',
             ],
-            'dataUmum.periode' => [
+            'periode' => [
                 'string',
                 'nullable',
             ],
