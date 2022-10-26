@@ -50,14 +50,14 @@
                             {{ trans('cruds.ketua.fields.ketua') }}
                             @include('components.table.sort', ['field' => 'ketua.contact_first_name'])
                         </th>
-                        <th>
+                        {{-- <th>
                             {{ trans('cruds.contactContact.fields.contact_first_name') }}
                             @include('components.table.sort', ['field' => 'ketua.contact_first_name'])
                         </th>
                         <th>
                             {{ trans('cruds.ketua.fields.name') }}
                             @include('components.table.sort', ['field' => 'name'])
-                        </th>
+                        </th> --}}
                         <th>
                             {{ trans('cruds.ketua.fields.periode') }}
                             @include('components.table.sort', ['field' => 'periode'])
@@ -80,14 +80,14 @@
                                     <span class="badge badge-relationship">{{ $ketua->ketua->contact_first_name ?? '' }}</span>
                                 @endif
                             </td>
-                            <td>
+                            {{-- <td>
                                 @if($ketua->ketua)
                                     {{ $ketua->ketua->contact_first_name ?? '' }}
                                 @endif
                             </td>
                             <td>
                                 {{ $ketua->name }}
-                            </td>
+                            </td> --}}
                             <td>
                                 {{ $ketua->periode }}
                             </td>
