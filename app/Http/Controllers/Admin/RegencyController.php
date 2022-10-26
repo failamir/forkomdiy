@@ -43,8 +43,6 @@ class RegencyController extends Controller
     {
         abort_if(Gate::denies('regency_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $regency->load('owner');
-
         return view('admin.regency.show', compact('regency'));
     }
 }

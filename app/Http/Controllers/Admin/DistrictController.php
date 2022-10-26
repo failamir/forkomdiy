@@ -43,8 +43,6 @@ class DistrictController extends Controller
     {
         abort_if(Gate::denies('district_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $district->load('owner');
-
         return view('admin.district.show', compact('district'));
     }
 }

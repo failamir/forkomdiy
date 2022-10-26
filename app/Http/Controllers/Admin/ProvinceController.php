@@ -43,8 +43,6 @@ class ProvinceController extends Controller
     {
         abort_if(Gate::denies('province_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $province->load('owner');
-
         return view('admin.province.show', compact('province'));
     }
 }

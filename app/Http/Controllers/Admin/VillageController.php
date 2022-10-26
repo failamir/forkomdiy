@@ -43,8 +43,6 @@ class VillageController extends Controller
     {
         abort_if(Gate::denies('village_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $village->load('owner');
-
         return view('admin.village.show', compact('village'));
     }
 }

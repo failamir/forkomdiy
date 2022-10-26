@@ -17,7 +17,7 @@ class DistrictApiController extends Controller
     {
         abort_if(Gate::denies('district_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new DistrictResource(District::with(['owner'])->get());
+        return new DistrictResource(District::all());
     }
 
     public function store(StoreDistrictRequest $request)
@@ -33,7 +33,7 @@ class DistrictApiController extends Controller
     {
         abort_if(Gate::denies('district_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new DistrictResource($district->load(['owner']));
+        return new DistrictResource($district);
     }
 
     public function update(UpdateDistrictRequest $request, District $district)
