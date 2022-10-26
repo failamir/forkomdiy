@@ -238,8 +238,6 @@ return [
             'nama_lembaga'               => 'Nama Lembaga',
             'nama_lembaga_helper'        => 'Nama singkatan dan nama panjang',
             'ketua'                      => 'Ketua',
-            'ketua_name'                 => 'Nama Ketua',
-            'periode'                    => 'Periode',
             'ketua_helper'               => ' ',
             'website'                    => 'Website',
             'website_helper'             => ' ',
@@ -307,6 +305,10 @@ return [
             'updated_at_helper' => ' ',
             'deleted_at'        => 'Deleted at',
             'deleted_at_helper' => ' ',
+            'name'              => 'Name',
+            'name_helper'       => ' ',
+            'owner'             => 'Owner',
+            'owner_helper'      => ' ',
         ],
     ],
     'province' => [
@@ -347,6 +349,8 @@ return [
             'updated_at_helper'   => ' ',
             'deleted_at'          => 'Deleted at',
             'deleted_at_helper'   => ' ',
+            'owner'               => 'Owner',
+            'owner_helper'        => ' ',
         ],
     ],
     'district' => [
