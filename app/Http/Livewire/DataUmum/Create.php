@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\DataUmum;
 
 use App\Models\DataUmum;
+use App\Models\ContactContact;
 use App\Models\Ketua;
 use App\Models\Perizinan;
 use App\Models\Province;
@@ -48,7 +49,10 @@ class Create extends Component
     public function submit()
     {
         $this->validate();
-
+        $values = array('id' => 0,'contact_first_name' => $this->dataUmum->ketua_name);
+        $contact= ContactContact::create($values);
+        $values = array('id' => 0,'ketua_id' => $contact->id,'periode' => $this->dataUmum->periode);
+        Ketua::create($values);
         $this->dataUmum->save();
         $this->syncMedia();
 
