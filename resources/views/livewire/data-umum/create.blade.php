@@ -19,7 +19,7 @@
         <div class="help-block">
             {{ trans('cruds.dataUmum.fields.ketua_helper') }}
         </div>
-        Jika belum ada di list, Tambah <button type="button" class="btn btn-success" onclick="myFunction()">-> disini</button>
+        Jika belum ada di list, Tambah <button type="button" class="btn btn-success" onclick="myFunction()">disini</button>
         
     </div>
     <div id="myDIV" style="display: none;" class="drop-shadow-lg">
