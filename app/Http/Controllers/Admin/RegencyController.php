@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\WithCSVImport;
 use App\Models\Regency;
 use Gate;
 use Illuminate\Http\Request;
@@ -10,6 +11,13 @@ use Illuminate\Http\Response;
 
 class RegencyController extends Controller
 {
+    use WithCSVImport;
+
+    public function __construct()
+    {
+        $this->csvImportModel = Regency::class;
+    }
+
     public function index()
     {
         abort_if(Gate::denies('regency_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
@@ -34,6 +42,8 @@ class RegencyController extends Controller
     public function show(Regency $regency)
     {
         abort_if(Gate::denies('regency_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $regency->load('owner');
 
         return view('admin.regency.show', compact('regency'));
     }

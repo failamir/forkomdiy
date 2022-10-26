@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\V1\Admin\JenisKerjasamaApiController;
 use App\Http\Controllers\Api\V1\Admin\KetuaApiController;
 use App\Http\Controllers\Api\V1\Admin\PerizinanApiController;
 use App\Http\Controllers\Api\V1\Admin\ProvinceApiController;
+use App\Http\Controllers\Api\V1\Admin\RegencyApiController;
 use App\Http\Controllers\Api\V1\Admin\VillageApiController;
 
 Route::group(['prefix' => 'v1', 'as' => 'api.', 'middleware' => ['auth:sanctum']], function () {
@@ -32,6 +33,9 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'middleware' => ['auth:sanctum']
 
     // Province
     Route::apiResource('provinces', ProvinceApiController::class);
+
+    // Regencies
+    Route::apiResource('regencies', RegencyApiController::class);
 
     // Districts
     Route::apiResource('districts', DistrictApiController::class);

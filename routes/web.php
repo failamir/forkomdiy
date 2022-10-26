@@ -95,6 +95,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
     Route::resource('provinces', ProvinceController::class, ['except' => ['store', 'update', 'destroy']]);
 
     // Regencies
+    Route::post('regencies/csv', [RegencyController::class, 'csvStore'])->name('regencies.csv.store');
+    Route::put('regencies/csv', [RegencyController::class, 'csvUpdate'])->name('regencies.csv.update');
     Route::resource('regencies', RegencyController::class, ['except' => ['store', 'update', 'destroy']]);
 
     // Districts
