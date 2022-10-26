@@ -40,6 +40,10 @@ class Create extends Component
                 'exists:contact_contacts,id',
                 'nullable',
             ],
+            'ketua.name' => [
+                'string',
+                'nullable',
+            ],
             'ketua.periode' => [
                 'string',
                 'nullable',

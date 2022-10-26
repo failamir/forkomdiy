@@ -37,6 +37,14 @@
                         </tr>
                         <tr>
                             <th>
+                                {{ trans('cruds.ketua.fields.name') }}
+                            </th>
+                            <td>
+                                {{ $ketua->name }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
                                 {{ trans('cruds.ketua.fields.periode') }}
                             </th>
                             <td>

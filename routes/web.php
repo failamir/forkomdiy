@@ -85,6 +85,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
     Route::resource('jenis-kerjasamas', JenisKerjasamaController::class, ['except' => ['store', 'update', 'destroy']]);
 
     // Ketua
+    Route::post('ketuas/csv', [KetuaController::class, 'csvStore'])->name('ketuas.csv.store');
+    Route::put('ketuas/csv', [KetuaController::class, 'csvUpdate'])->name('ketuas.csv.update');
     Route::resource('ketuas', KetuaController::class, ['except' => ['store', 'update', 'destroy']]);
 
     // Province
