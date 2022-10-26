@@ -19,7 +19,44 @@
         <div class="help-block">
             {{ trans('cruds.dataUmum.fields.ketua_helper') }}
         </div>
+        Jika belum ada di list, Tambah <button type="button" onclick="myFunction()">-> disini</button>
+        
     </div>
+    <div id="myDIV" style="display: none;" class="drop-shadow-lg">
+        <hr>
+        <div class="form-group {{ $errors->has('dataUmum.ketua_name') ? 'invalid' : '' }}">
+            <label class="form-label" for="ketua_name">{{ trans('cruds.dataUmum.fields.ketua_name') }}</label>
+            <input class="form-control" type="text" name="ketua_name" id="ketua_name" wire:model.defer="dataUmum.ketua_name">
+            <div class="validation-message">
+                {{ $errors->first('dataUmum.ketua_name') }}
+            </div>
+            {{-- <div class="help-block">
+                {{ trans('cruds.dataUmum.fields.ketua_name') }}
+            </div> --}}
+        </div>
+        <div class="form-group {{ $errors->has('dataUmum.ketua_id') ? 'invalid' : '' }}">
+            <label class="form-label" for="periode">{{ trans('cruds.dataUmum.fields.periode') }}</label>
+            <input class="form-control" type="text" name="periode" id="periode" wire:model.defer="dataUmum.periode">
+            <div class="validation-message">
+                {{ $errors->first('dataUmum.periode') }}
+            </div>
+            {{-- <div class="help-block">
+                {{ trans('cruds.dataUmum.fields.periode') }}
+            </div> --}}
+            <hr>
+        </div>
+        <hr>
+    </div>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myDIV");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
     <div class="form-group {{ $errors->has('dataUmum.sekretariat_wilayah') ? 'invalid' : '' }}">
         <label class="form-label" for="sekretariat_wilayah">{{ trans('cruds.dataUmum.fields.sekretariat_wilayah') }}</label>
         <input class="form-control" type="text" name="sekretariat_wilayah" id="sekretariat_wilayah" wire:model.defer="dataUmum.sekretariat_wilayah">
