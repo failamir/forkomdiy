@@ -53,6 +53,7 @@ class Create extends Component
         $contact= ContactContact::create($values);
         $values = array('id' => 0,'ketua_id' => $contact->id,'periode' => $this->dataUmum->periode,'name' => $this->dataUmum->ketua_name);
         Ketua::create($values);
+        $this->dataUmum->ketua_id = $contact->id;
         $this->dataUmum->save();
         $this->syncMedia();
 
