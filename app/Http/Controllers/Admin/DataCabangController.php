@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\WithCSVImport;
 use App\Models\DataCabang;
+use App\Models\District;
 use Gate;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -19,6 +20,21 @@ class DataCabangController extends Controller
     }
 
     public function index()
+    {
+        abort_if(Gate::denies('data_cabang_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        return view('admin.data-cabang.index');
+    }
+
+    public function regencies()
+    {
+        $cities = District::whereHas('regency', function ($query) {
+            $query->whereId(request()->input('id_regency', 0));
+        })->pluck('name','id');
+        return response ()->json($cities);
+    }
+
+    public function districts()
     {
         abort_if(Gate::denies('data_cabang_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 

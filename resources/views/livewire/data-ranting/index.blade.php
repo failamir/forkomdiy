@@ -64,9 +64,9 @@
                             {{ trans('cruds.dataRanting.fields.jumlah_anggota') }}
                             @include('components.table.sort', ['field' => 'jumlah_anggota'])
                         </th>
-                        <th>
+                        {{-- <th>
                             {{ trans('cruds.dataRanting.fields.lampiran') }}
-                        </th>
+                        </th> --}}
                         <th>
                         </th>
                     </tr>
@@ -99,7 +99,7 @@
                             <td>
                                 {{ $dataRanting->jumlah_anggota }}
                             </td>
-                            <td>
+                            {{-- <td>
                                 @foreach($dataRanting->lampiran as $key => $entry)
                                     <a class="link-light-blue" href="{{ $entry['url'] }}">
                                         <i class="far fa-file">
@@ -107,7 +107,7 @@
                                         {{ $entry['file_name'] }}
                                     </a>
                                 @endforeach
-                            </td>
+                            </td> --}}
                             <td>
                                 <div class="flex justify-end">
                                     @can('data_ranting_show')

@@ -1,6 +1,6 @@
 <form wire:submit.prevent="submit" class="pt-3">
 
-    <div class="form-group {{ $errors->has('dataRanting.village_id') ? 'invalid' : '' }}">
+    {{-- <div class="form-group {{ $errors->has('dataRanting.village_id') ? 'invalid' : '' }}">
         <label class="form-label" for="village">{{ trans('cruds.dataRanting.fields.village') }}</label>
         <x-select-list class="form-control" id="village" name="village" :options="$this->listsForFields['village']" wire:model="dataRanting.village_id" />
         <div class="validation-message">
@@ -9,7 +9,8 @@
         <div class="help-block">
             {{ trans('cruds.dataRanting.fields.village_helper') }}
         </div>
-    </div>
+    </div> --}}
+    @livewire('country-state-ranting', ['selectedCountry' => 3376])
     <div class="form-group {{ $errors->has('dataRanting.nama_ketua') ? 'invalid' : '' }}">
         <label class="form-label" for="nama_ketua">{{ trans('cruds.dataRanting.fields.nama_ketua') }}</label>
         <input class="form-control" type="text" name="nama_ketua" id="nama_ketua" wire:model.defer="dataRanting.nama_ketua">
@@ -60,3 +61,67 @@
         </a>
     </div>
 </form>
+
+@section('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#id_regency').change(function () {
+                var $state = $('#id_regency');
+                $.ajax({
+                    url: "{{ url('/states') }}",
+                    data: {
+                        id_regency: $(this).val()
+                    },
+                    success: function (data) {
+                        $state.html('<option value="" selected>Choose state</option>');
+                        $.each(data, function (id, value) {
+                            $state.append('<option value="' + id + '">' + value + '</option>');
+                        });
+                    }
+                });
+
+                $('#id_regency, #city_id').val("");
+                $('#state').removeClass('d-none');
+
+            });
+
+            $('#id_regency').change(function () {
+                var $city = $('#city_id');
+                $.ajax({
+                    url: "{{ url('/cities') }}",
+                    data: {
+                        id_regency: $(this).val()
+                    },
+                    success: function (data) {
+                        console.log(data);
+                        $city.html('<option value="" selected>Choose city</option>');
+                        $.each(data, function (id, value) {
+                            $city.append('<option value="' + id + '">' + value + '</option>');
+                        });
+                    }
+                });
+                $('#city').removeClass('d-none');
+            });
+
+            $('#id_district').change(function () {
+                var $district = $('#district_id');
+                $.ajax({
+                    url: "{{ url('/village') }}",
+                    data: {
+                        id_district: $(this).val()
+                    },
+                    success: function (data) {
+                        
+                        $district.html('<option value="" selected>Choose Village</option>');
+                        $.each(data, function (id, value) {
+                            $district.append('<option value="' + id + '">' + value + '</option>');
+                        });
+                    }
+                });
+                
+                $('#district').removeClass('d-none');
+            });
+        });
+    </script>
+@endsection

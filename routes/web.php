@@ -21,6 +21,8 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SystemCalendarController;
 use App\Http\Controllers\Admin\UserAlertController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\CityController;
+use App\Http\Controllers\Admin\StateController;
 use App\Http\Controllers\Admin\VillageController;
 use App\Http\Controllers\Auth\ApprovalController;
 use App\Http\Controllers\Auth\UserProfileController;
@@ -120,6 +122,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
     Route::post('data-cabangs/csv', [DataCabangController::class, 'csvStore'])->name('data-cabangs.csv.store');
     Route::put('data-cabangs/csv', [DataCabangController::class, 'csvUpdate'])->name('data-cabangs.csv.update');
     Route::resource('data-cabangs', DataCabangController::class, ['except' => ['store', 'update', 'destroy']]);
+    Route::get('cities', [CityController::class, 'index'])->name('cities');
+    Route::get('states', [StateController::class, 'index'])->name('states');
+    Route::get('village', [StateController::class, 'villages'])->name('villages');
+
 
     // Data Ranting
     Route::post('data-rantings/media', [DataRantingController::class, 'storeMedia'])->name('data-rantings.storeMedia');

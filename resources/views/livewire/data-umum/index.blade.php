@@ -94,9 +94,9 @@
                             {{ trans('cruds.dataUmum.fields.jumlah_anggota') }}
                             @include('components.table.sort', ['field' => 'jumlah_anggota'])
                         </th>
-                        <th>
+                        {{-- <th>
                             {{ trans('cruds.dataUmum.fields.lampiran') }}
-                        </th>
+                        </th> --}}
                         <th>
                             {{ trans('cruds.dataUmum.fields.province') }}
                             @include('components.table.sort', ['field' => 'province.province_name'])
@@ -162,7 +162,7 @@
                             <td>
                                 {{ $dataUmum->jumlah_anggota }}
                             </td>
-                            <td>
+                            {{-- <td>
                                 @foreach($dataUmum->lampiran as $key => $entry)
                                     <a class="link-light-blue" href="{{ $entry['url'] }}">
                                         <i class="far fa-file">
@@ -170,7 +170,7 @@
                                         {{ $entry['file_name'] }}
                                     </a>
                                 @endforeach
-                            </td>
+                            </td> --}}
                             <td>
                                 @if($dataUmum->province)
                                     <span class="badge badge-relationship">{{ $dataUmum->province->province_name ?? '' }}</span>

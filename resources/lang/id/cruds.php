@@ -230,7 +230,7 @@ return [
         ],
     ],
     'dataUmum' => [
-        'title'          => 'Data Lembaga',
+        'title'          => 'Data Lembaga Wilayah',
         'title_singular' => 'Data Lembaga',
         'fields'         => [
             'id'                         => 'ID',
@@ -400,8 +400,8 @@ return [
         ],
     ],
     'dataKhusu' => [
-        'title'          => 'Data Khusus',
-        'title_singular' => 'Data Khusu',
+        'title'          => 'Data Lembaga Daerah',
+        'title_singular' => 'Data Khusus',
     ],
     'dataDaerah' => [
         'title'          => 'Data Daerah',

@@ -1,6 +1,6 @@
 <form wire:submit.prevent="submit" class="pt-3">
 
-    <div class="form-group {{ $errors->has('dataRanting.village_id') ? 'invalid' : '' }}">
+    {{-- <div class="form-group {{ $errors->has('dataRanting.village_id') ? 'invalid' : '' }}">
         <label class="form-label" for="village">{{ trans('cruds.dataRanting.fields.village') }}</label>
         <x-select-list class="form-control" id="village" name="village" :options="$this->listsForFields['village']" wire:model="dataRanting.village_id" />
         <div class="validation-message">
@@ -9,7 +9,7 @@
         <div class="help-block">
             {{ trans('cruds.dataRanting.fields.village_helper') }}
         </div>
-    </div>
+    </div> --}}
     <div class="form-group {{ $errors->has('dataRanting.nama_ketua') ? 'invalid' : '' }}">
         <label class="form-label" for="nama_ketua">{{ trans('cruds.dataRanting.fields.nama_ketua') }}</label>
         <input class="form-control" type="text" name="nama_ketua" id="nama_ketua" wire:model.defer="dataRanting.nama_ketua">

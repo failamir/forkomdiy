@@ -53,6 +53,7 @@ class User extends Authenticatable implements HasLocalePreference
     protected $fillable = [
         'name',
         'email',
+        'level',
         'password',
         'locale',
         'is_approved',

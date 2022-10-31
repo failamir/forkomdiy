@@ -20,6 +20,21 @@
             {{ trans('cruds.user.fields.email_helper') }}
         </div>
     </div>
+    <div class="form-group {{ $errors->has('user.level') ? 'invalid' : '' }}">
+        <label class="form-label" for="level">{{ 'user level' }}</label>
+        {{-- <x-select-list class="form-control" id="level" name="level" :options="$this->listsForFields['level']" wire:model="user.level" /> --}}
+            <select name="level" id="level">
+                <option value="Daerah">Daerah</option>
+                <option value="Cabang">Cabang</option>
+                <option value="Ranting">Ranting</option>
+              </select>
+        <div class="validation-message">
+            {{-- {{ $errors->first('user.level') }} --}}
+        </div>
+        <div class="help-block">
+            {{-- {{ trans('cruds.user.fields.level_helper') }} --}}
+        </div>
+    </div>
     <div class="form-group {{ $errors->has('user.password') ? 'invalid' : '' }}">
         <label class="form-label required" for="password">{{ trans('cruds.user.fields.password') }}</label>
         <input class="form-control" type="password" name="password" id="password" required wire:model.defer="password">

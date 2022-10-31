@@ -54,6 +54,10 @@ class Create extends Component
                 'string',
                 'required',
             ],
+            'level' => [
+                'string',
+                'required',
+            ],
             'roles' => [
                 'required',
                 'array',

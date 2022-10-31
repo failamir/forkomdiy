@@ -18,6 +18,15 @@ class VillageController extends Controller
         $this->csvImportModel = Village::class;
     }
 
+    public function villages()
+    {
+        $states = Village::whereHas('city', function ($query) {
+            $query->whereId(request()->input('id_district', 0));
+        })->pluck('name', 'id');
+
+        return response()->json($states);
+    }
+
     public function index()
     {
         abort_if(Gate::denies('village_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
