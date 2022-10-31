@@ -135,6 +135,10 @@
                         </tr>
                     </tbody>
                 </table>
+
+                <table class="table table-view">
+                    <a href="/admin/data-daerahs/1"> Sleman    </a>
+                </table>
             </div>
             <div class="form-group">
                 @can('data_umum_edit')

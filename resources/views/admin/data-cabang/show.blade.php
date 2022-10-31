@@ -75,6 +75,10 @@
                         </tr>
                     </tbody>
                 </table>
+
+                <table class="table table-view">
+                    <a href="/admin/data-rantings/1"> Depok    </a>
+                </table>
             </div>
             <div class="form-group">
                 @can('data_cabang_edit')

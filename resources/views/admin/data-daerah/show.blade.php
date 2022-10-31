@@ -75,6 +75,10 @@
                         </tr>
                     </tbody>
                 </table>
+
+                <table class="table table-view">
+                    <a href="/admin/data-cabangs/1"> Condong Catur    </a>
+                </table>
             </div>
             <div class="form-group">
                 @can('data_daerah_edit')
